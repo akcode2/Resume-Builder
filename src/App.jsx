@@ -19,6 +19,8 @@ function App() {
     skills: [],
   });
 
+  
+
   const handleDetailsInput = (event) => {
     const fieldToUpdate = event.target.name;
     // Copy the nested object and update the value

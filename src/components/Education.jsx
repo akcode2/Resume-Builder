@@ -1,27 +1,26 @@
-import Button from "./Button.jsx";
+import { useState } from "react";
+import EduForm from "./EduForm.jsx";
 
 function Education({ resume }) {
-  
+  const [showForm, setShowForm] = useState(false);
 
-  function addEduBtn() {
-    const btn = document.createElement("button");
-    btn.innerText = "+ Education";
-    contents.append(btn);
-  }
-
-
-
+  const toggleShowForm = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <>
       <details id="education">
         <summary>Education</summary>
         <div className="contents">
-          {resume.education.map((item, index) => (
-            
-            <button key={item.school} onClick={() => expandForm(index)}>{item.school}</button>
+          {/* Show the form if toggleShowForm is true */}
+          {showForm && <EduForm />}
+          {/* Otherwise show list of institutions as buttons */}
+          {!showForm && resume.education.map((item, index) => (
+            <button key={item.school} onClick={toggleShowForm}>
+              {item.school}
+            </button>
           ))}
-          <button>+ Education</button>
         </div>
       </details>
     </>
