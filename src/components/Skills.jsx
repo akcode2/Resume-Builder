@@ -1,7 +1,7 @@
 import { useState } from "react";
-import EduForm from "./EduForm.jsx";
+import SkillsForm from "./SkillsForm.jsx";
 
-function Education({ resume, handleInput, category }) {
+function Skills({ resume, handleInput, category }) {
   const [showForm, setShowForm] = useState(false);
   const [indexToShow, setIndexToShow] = useState(-1);
 
@@ -12,29 +12,29 @@ function Education({ resume, handleInput, category }) {
 
   return (
     <>
-      <details id="education">
-        <summary>Education</summary>
+      <details id="skills">
+        <summary>Skills and interests</summary>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
-            <EduForm
+            <SkillsForm
               resume={resume}
               index={indexToShow}
               handleInput={handleInput}
               category={category}
             />
           )}
-          {/* Otherwise show list of institutions as buttons */}
+          {/* Otherwise show list of experience as buttons */}
           {!showForm &&
-            resume.education.map((item, index) => (
-              <button key={item.school} onClick={() => toggleShowForm(index)}>
-                {item.school}
+            resume["skills"].map((item, index) => (
+              <button key={item.skill} onClick={() => toggleShowForm(index)}>
+                {item.skill}
               </button>
             ))}
-          {/* Afterwards, show add button to add institution */}
+          {/* Afterwards, show add button to add skill */}
           {!showForm && (
-            <button id="addInstitution" onClick={() => toggleShowForm()}>
-              + Institution
+            <button id="addSkill" onClick={() => toggleShowForm()}>
+              + Skill or Interest
             </button>
           )}
         </div>
@@ -43,4 +43,4 @@ function Education({ resume, handleInput, category }) {
   );
 }
 
-export default Education;
+export default Skills;

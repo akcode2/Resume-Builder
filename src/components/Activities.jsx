@@ -1,7 +1,7 @@
 import { useState } from "react";
-import EduForm from "./EduForm.jsx";
+import ActivitiesForm from "./ActivitiesForm.jsx";
 
-function Education({ resume, handleInput, category }) {
+function Activities({ resume, handleInput, category }) {
   const [showForm, setShowForm] = useState(false);
   const [indexToShow, setIndexToShow] = useState(-1);
 
@@ -12,29 +12,32 @@ function Education({ resume, handleInput, category }) {
 
   return (
     <>
-      <details id="education">
-        <summary>Education</summary>
+      <details id="activities">
+        <summary>Leadership and activities</summary>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
-            <EduForm
+            <ActivitiesForm
               resume={resume}
               index={indexToShow}
               handleInput={handleInput}
               category={category}
             />
           )}
-          {/* Otherwise show list of institutions as buttons */}
+          {/* Otherwise show list of activities as buttons */}
           {!showForm &&
-            resume.education.map((item, index) => (
-              <button key={item.school} onClick={() => toggleShowForm(index)}>
-                {item.school}
+            resume["activities"].map((item, index) => (
+              <button
+                key={item.organization}
+                onClick={() => toggleShowForm(index)}
+              >
+                {item.organization}
               </button>
             ))}
-          {/* Afterwards, show add button to add institution */}
+          {/* Afterwards, show add button to add activity */}
           {!showForm && (
-            <button id="addInstitution" onClick={() => toggleShowForm()}>
-              + Institution
+            <button id="addActivity" onClick={() => toggleShowForm()}>
+              + Leadership / Activity
             </button>
           )}
         </div>
@@ -43,4 +46,4 @@ function Education({ resume, handleInput, category }) {
   );
 }
 
-export default Education;
+export default Activities;

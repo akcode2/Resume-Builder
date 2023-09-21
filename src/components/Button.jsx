@@ -1,4 +1,4 @@
-function Button({ key, label }) {
+function Button({ id, label }) {
   let svg;
   // icons
   if (label === "Delete") {
@@ -38,7 +38,7 @@ function Button({ key, label }) {
 
   return (
     <>
-      <button key={key}>
+      <button id={id}>
         <i className="icon">{svg}</i> <span>{label}</span>
       </button>
     </>

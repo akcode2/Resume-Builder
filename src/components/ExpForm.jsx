@@ -1,7 +1,7 @@
 import Button from "./Button.jsx";
 
 // Replace the contents of the <details> element with a form
-function EduForm({ resume, index, handleInput, category }) {
+function ExpForm({ resume, index, handleInput, category }) {
   let emptyForm = true;
   // 0 is falsy, handle that case
   if (index >= 0) {
@@ -11,22 +11,22 @@ function EduForm({ resume, index, handleInput, category }) {
   return (
     <>
       <label>
-        School
+        Company name
         <input
-          name="school"
+          name="company"
           type="text"
-          value={emptyForm ? "" : resume[category][index].school}
+          value={emptyForm ? "" : resume[category][index].company}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
         ></input>
       </label>
       <label>
-        Degree
+        Position or title
         <input
-          name="degree"
+          name="position"
           type="text"
-          value={emptyForm ? "" : resume[category][index].degree}
+          value={emptyForm ? "" : resume[category][index].position}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -65,6 +65,17 @@ function EduForm({ resume, index, handleInput, category }) {
           }
         ></input>
       </label>
+      <label>
+        Description
+        <input
+          name="description"
+          type="text"
+          value={emptyForm ? "" : resume[category][index].description}
+          onChange={(e) =>
+            handleInput(e.target.name, e.target.value, category, index)
+          }
+        ></input>
+      </label>
       <div className="btnContainer">
         <Button id="deleteBtn" label="Delete" />
         <Button id="cancelBtn" label="Cancel" />
@@ -74,4 +85,4 @@ function EduForm({ resume, index, handleInput, category }) {
   );
 }
 
-export default EduForm;
+export default ExpForm;
