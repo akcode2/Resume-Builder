@@ -1,4 +1,5 @@
 function PersonalDetails({ resume, handleDetailsInput}) {
+
   return (
     <>
       <div className="formCategory" id="personalDetails">
@@ -8,7 +9,7 @@ function PersonalDetails({ resume, handleDetailsInput}) {
             name="fullName"
             type="text"
             value={resume["personalDetails"].fullName}
-            onChange={handleDetailsInput}
+            onChange={e => handleDetailsInput(e.target.name, e.target.value)}
           ></input>
         </label>
         <label>
@@ -17,7 +18,7 @@ function PersonalDetails({ resume, handleDetailsInput}) {
             name="email"
             type="email"
             value={resume["personalDetails"].email}
-            onChange={handleDetailsInput}
+            onChange={e => handleDetailsInput(e.target.name, e.target.value)}
           ></input>
         </label>
         <label>
@@ -26,7 +27,7 @@ function PersonalDetails({ resume, handleDetailsInput}) {
             name="phoneNumber"
             type="tel"
             value={resume["personalDetails"].phoneNumber}
-            onChange={handleDetailsInput}
+            onChange={e => handleDetailsInput(e.target.name, e.target.value)}
           ></input>
         </label>
         <label>
@@ -35,7 +36,7 @@ function PersonalDetails({ resume, handleDetailsInput}) {
             name="address"
             type="text"
             value={resume["personalDetails"].address}
-            onChange={handleDetailsInput}
+            onChange={e => handleDetailsInput(e.target.name, e.target.value)}
           ></input>
         </label>
       </div>

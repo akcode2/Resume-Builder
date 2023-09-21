@@ -1,28 +1,32 @@
 import Button from "./Button.jsx";
 
 // Replace the contents of the <details> element with a form
-function EduForm({ index }) {
-//   const cancelBtn = document.createElement("button");
-//   const addBtn = document.createElement("button");
-//   // Affix buttons
-//   btnBox.append({ deleteBtn }, cancelBtn, addBtn);
-//   contents.append(btnBox);
+function EduForm({ resume, index, handleInput, category }) {
+  let emptyForm = true;
+  // 0 is falsy, handle that case
+  if (index >= 0) {
+    emptyForm = false;
+  }
+
+
   return (
     <>
-      <label>
+      {/* <label>
         School
         <input
           name="school"
           type="text"
-          value={index ? resume["education"][index].school : ""}
+          value={emptyForm ? "" : resume[category][index].school}
+          onChange={e => handleInput(e.target.name, e.target.value, category)}
         ></input>
-      </label>
+      </label> */}
       <label>
         Degree
         <input
           name="degree"
           type="text"
-          value={index ? resume["education"][index].degree : ""}
+          value={emptyForm ? "" : resume[category][index].degree}
+          onChange={e => handleInput(e.target.name, e.target.value, category, index)}
         ></input>
       </label>
       <label>
@@ -30,15 +34,17 @@ function EduForm({ index }) {
         <input
           name="startDate"
           type="text"
-          value={index ? resume["education"][index].startDate : ""}
+          value={emptyForm ? "" : resume[category][index].startDate}
+          onChange={e => handleInput(e.target.name, e.target.value, category, index)}
         ></input>
       </label>
-      <label>
+      {/* <label>
         End date
         <input
           name="endDate"
           type="text"
-          value={index ? resume["education"][index].endDate : ""}
+          value={emptyForm ? "" : resume[category][index].endDate}
+          onChange={e => handleInput(e.target.name, e.target.value, category)}
         ></input>
       </label>
       <label>
@@ -46,14 +52,15 @@ function EduForm({ index }) {
         <input
           name="location"
           type="text"
-          value={index ? resume["education"][index].location : ""}
+          value={emptyForm ? "" : resume[category][index].location}
+          onChange={e => handleInput(e.target.name, e.target.value, category)}
         ></input>
-      </label>
-        <div className="btnContainer">
-            <Button key="deleteBtn" label="Delete" />
-            <Button key="cancelBtn" label="Cancel" />
-            <Button key="saveBtn" label="Save" />
-        </div>
+      </label> */}
+      <div className="btnContainer">
+        <Button key="deleteBtn" label="Delete" />
+        <Button key="cancelBtn" label="Cancel" />
+        <Button key="saveBtn" label="Save" />
+      </div>
     </>
   );
 }
