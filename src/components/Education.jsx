@@ -22,6 +22,7 @@ function Education({ resume, handleInput, category }) {
               index={indexToShow}
               handleInput={handleInput}
               category={category}
+              toggleShowForm={toggleShowForm} // Pass toggleShowForm as a prop to allow form to be canceled
             />
           )}
           {/* Otherwise show list of institutions as buttons */}

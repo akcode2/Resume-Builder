@@ -22,6 +22,7 @@ function Experience({ resume, handleInput, category }) {
               index={indexToShow}
               handleInput={handleInput}
               category={category}
+              toggleShowForm={toggleShowForm}
             />
           )}
           {/* Otherwise show list of experience as buttons */}

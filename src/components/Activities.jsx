@@ -22,6 +22,7 @@ function Activities({ resume, handleInput, category }) {
               index={indexToShow}
               handleInput={handleInput}
               category={category}
+              toggleShowForm={toggleShowForm}
             />
           )}
           {/* Otherwise show list of activities as buttons */}

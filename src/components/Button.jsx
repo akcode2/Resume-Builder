@@ -1,4 +1,5 @@
-function Button({ id, label }) {
+function Button({ id, label, handleClick }) {
+  // When "Cancel" is clicked, reset the form category
   let svg;
   // icons
   if (label === "Delete") {
@@ -38,7 +39,7 @@ function Button({ id, label }) {
 
   return (
     <>
-      <button id={id}>
+      <button id={id} onClick={handleClick}>
         <i className="icon">{svg}</i> <span>{label}</span>
       </button>
     </>

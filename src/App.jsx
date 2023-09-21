@@ -53,7 +53,10 @@ function App() {
         description: "Started from the bottom",
       },
     ],
-    skills: [{skill: "Playing chess"}, {skill: "Underwater basket-weaving"}],
+    skills: [
+      { skill: "Playing chess" },
+      { skill: "Underwater basket-weaving" },
+    ],
   });
 
   // 1. Spread properties from resume into updatedResume,
@@ -110,10 +113,6 @@ function App() {
           category={"activities"}
         />
         <Skills resume={resume} handleInput={handleInput} category={"skills"} />
-        <details>
-          <summary>Skills & Interests</summary>
-          <button>+ Activity</button>
-        </details>
       </div>
       <div id="preview" className="preview">
         <div id="header">
