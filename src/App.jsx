@@ -11,51 +11,81 @@ function App() {
   // Resume is an object with nested objects for each section
   const [resume, setResume] = useState({
     personalDetails: {
-      fullName: "Harry Potter",
-      email: "hedwig@owlmail.com",
-      phoneNumber: "(414)-232-9992",
-      address:
-        "London, UK",
+      fullName: "Kendall Roy",
+      email: "kendall.roy@waystar.com",
+      phoneNumber: "(555) 555-5555",
+      address: "1234 Success St, New York, NY ",
     },
     education: [
       {
-        school: "Hogwarts School of Witchcraft and Wizardry",
-        degree: "Wizard in Good Standing",
+        school: "Harvard Business School",
+        degree: "Master of Business Administration (MBA)",
         startDate: 1991,
-        endDate: 1998,
-        location: "Scotland",
+        endDate: "May 2010",
+        location: "Boston, MA",
       },
       {
-        school: "Discount Dave's Higher Learning",
-        degree: "Bachelor of Science in Kicking Ass",
+        school: "Wharton School of Business, University of Pennsylvania",
+        degree: "Bachelor of Business Administration",
         startDate: 2021,
-        endDate: 2023,
-        location: "Beverly Hills",
+        endDate: "May 2008",
+        location: "Philadelphia, PA",
       },
     ],
     experience: [
       {
-        company: "Ministry of Magic",
-        position: "Auror",
-        startDate: 1999,
-        endDate: "present",
-        location: "London, England",
-        description: "Fight baddies",
+        company: "Waystar Royco",
+        position: "Chief Executive Officer",
+        startDate: "June 2018",
+        endDate: "Present",
+        location: "New York, NY",
+        description: `
+        * Led the company through major strategic shifts, resulting in significant revenue growth and market expansion.
+        `,
+      },
+      {
+        company: "Waystar Royco",
+        position: "Vice President of Strategic Development",
+        startDate: "May 2010",
+        endDate: "June 2018",
+        location: "New York, NY",
+        description: `
+        * Developed and executed strategies to diversify revenue streams and drive business growth.
+        `,
       },
     ],
     activities: [
       {
-        organization: "Hogwarts Quidditch Team",
-        position: "Captain",
-        startDate: 1991,
-        endDate: 1996,
-        location: "London, UK",
-        description: "Started from the bottom",
+        organization: "New York Business Association",
+        role: "Board Member",
+        startDate: "May 2011",
+        endDate: "Present",
+        location: "New York, NY",
+        description:
+          "* Actively involved in shaping policies and initiatives to promote economic growth and business development in the region.",
+      },
+      {
+        organization: "Future Business Leaders Program",
+        role: "Mentor",
+        startDate: "September 2014",
+        endDate: "Present",
+        location: "New York, NY",
+        description:
+          "Guided and mentored aspiring business leaders, providing insights and advice to help them succeed in their careers.",
+      },
+      {
+        organization: "Industry Conferences",
+        role: "Speaker",
+        startDate: "May 2011",
+        endDate: "Present",
+        location: "New York, NY",
+        description:
+          "Shared expertise and insights on business strategies, leadership, and innovation at various industry conferences.",
       },
     ],
     skills: [
-      { skill: "Playing chess" },
-      { skill: "Underwater basket-weaving" },
+      {Skills: ["Strategic Planning", "Leadership", "Financial Analysis", "Market Research", "Negotiation", "Marketing Strategy"],
+       Interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"] },
     ],
   });
 
@@ -118,15 +148,11 @@ function App() {
         <div id="header">
           <div className="name">{resume["personalDetails"].fullName}</div>
           <div className="personalDetails">
-            <div className="detail">
-              {resume["personalDetails"].email}
-            </div>
+            <div className="detail">{resume["personalDetails"].email}</div>
             <div className="detail">
               {resume["personalDetails"].phoneNumber}
             </div>
-            <div className="detail">
-              {resume["personalDetails"].address}
-            </div>
+            <div className="detail">{resume["personalDetails"].address}</div>
           </div>
         </div>
         <div className="bodySection" id="eduPreview">
@@ -135,23 +161,22 @@ function App() {
           </div>
           <div>
             {resume["education"].map((item) => (
-                <div key={Math.random()} className="eduItem">
-                  <div className="schoolAndLocation">
-                    <div className="school">{item.school}</div>
-                    <div className="location">{item.location}</div>
-                  </div>
-                  <div className="degreeAndDates">
+              <div key={Math.random()} className="eduItem">
+                <div className="schoolAndLocation">
+                  <div className="school">{item.school}</div>
+                  <div className="location">{item.location}</div>
+                </div>
+                <div className="degreeAndDates">
                   <div className="degree">{item.degree}</div>
                   <div className="dates">
                     <span className="startDate">{item.startDate}</span>
                     <span> - </span>
                     <span className="endDate">{item.endDate}</span>
                   </div>
-                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
-
         </div>
         <div className="bodySection" id="expPreview">
           <div className="bodyHeading">
@@ -172,10 +197,8 @@ function App() {
                     <span className="endDate">{item.endDate}</span>
                   </div>
                 </div>
-                <div className="description">
-                  {item.description}
-                </div>
-              </div>  
+                <div className="description">{item.description}</div>
+              </div>
             ))}
           </div>
         </div>
@@ -191,16 +214,14 @@ function App() {
                   <div className="location">{item.location}</div>
                 </div>
                 <div className="positionAndDates">
-                  <div className="position">{item.position}</div>
+                  <div className="role">{item.role}</div>
                   <div className="dates">
                     <span className="startDate">{item.startDate}</span>
                     <span> - </span>
                     <span className="endDate">{item.endDate}</span>
                   </div>
                 </div>
-                <div className="description">
-                  {item.description}
-                </div>
+                <div className="description">{item.description}</div>
               </div>
             ))}
           </div>
