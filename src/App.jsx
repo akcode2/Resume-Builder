@@ -15,7 +15,7 @@ function App() {
       email: "hedwig@owlmail.com",
       phoneNumber: "(414)-232-9992",
       address:
-        "The Cupboard Under the Stairs, 4 Privet Drive, Little Whinging, Surrey",
+        "London, UK",
     },
     education: [
       {
@@ -49,7 +49,7 @@ function App() {
         position: "Captain",
         startDate: 1991,
         endDate: 1996,
-        location: "Hogwarts",
+        location: "London, UK",
         description: "Started from the bottom",
       },
     ],
@@ -117,59 +117,105 @@ function App() {
       <div id="preview" className="preview">
         <div id="header">
           <div className="name">{resume["personalDetails"].fullName}</div>
-          <div className="personalDetail">
-            {resume["personalDetails"].email}
-          </div>
-          <div className="personalDetail">
-            {resume["personalDetails"].phoneNumber}
-          </div>
-          <div className="personalDetail">
-            {resume["personalDetails"].address}
+          <div className="personalDetails">
+            <div className="detail">
+              {resume["personalDetails"].email}
+            </div>
+            <div className="detail">
+              {resume["personalDetails"].phoneNumber}
+            </div>
+            <div className="detail">
+              {resume["personalDetails"].address}
+            </div>
           </div>
         </div>
         <div className="bodySection" id="eduPreview">
-          <h1>Education</h1>
-          {resume["education"].map((item) => (
-            <div key={Math.random()} className="eduItem">
-              <div className="startDate">{item.startDate}</div>
-              <div className="endDate">{item.endDate}</div>
-              <div className="degree">{item.degree}</div>
-              <div className="location">{item.location}</div>
-              <div className="school">{item.school}</div>
-            </div>
-          ))}
+          <div className="bodyHeading">
+            <h1>Education</h1>
+          </div>
+          <div>
+            {resume["education"].map((item) => (
+                <div key={Math.random()} className="eduItem">
+                  <div className="schoolAndLocation">
+                    <div className="school">{item.school}</div>
+                    <div className="location">{item.location}</div>
+                  </div>
+                  <div className="degreeAndDates">
+                  <div className="degree">{item.degree}</div>
+                  <div className="dates">
+                    <span className="startDate">{item.startDate}</span>
+                    <span> - </span>
+                    <span className="endDate">{item.endDate}</span>
+                  </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+
         </div>
         <div className="bodySection" id="expPreview">
-          <h1>Experience</h1>
-          {resume["experience"].map((item) => (
-            <div key={Math.random()} className="expItem">
-              <div className="startDate">{item.startDate}</div>
-              <div className="endDate">{item.endDate}</div>
-              <div className="position">{item.position}</div>
-              <div className="location">{item.location}</div>
-              <div className="company">{item.company}</div>
-            </div>
-          ))}
+          <div className="bodyHeading">
+            <h1>Experience</h1>
+          </div>
+          <div>
+            {resume["experience"].map((item) => (
+              <div key={Math.random()} className="expItem">
+                <div className="companyAndLocation">
+                  <div className="company">{item.company}</div>
+                  <div className="location">{item.location}</div>
+                </div>
+                <div className="positionAndDates">
+                  <div className="position">{item.position}</div>
+                  <div className="dates">
+                    <span className="startDate">{item.startDate}</span>
+                    <span> - </span>
+                    <span className="endDate">{item.endDate}</span>
+                  </div>
+                </div>
+                <div className="description">
+                  {item.description}
+                </div>
+              </div>  
+            ))}
+          </div>
         </div>
         <div className="bodySection" id="activitiesPreview">
-          <h1>Leadership and Activities</h1>
-          {resume["activities"].map((item) => (
-            <div key={Math.random()} className="activitiesItem">
-              <div className="startDate">{item.startDate}</div>
-              <div className="endDate">{item.endDate}</div>
-              <div className="position">{item.position}</div>
-              <div className="location">{item.location}</div>
-              <div className="organization">{item.organization}</div>
-            </div>
-          ))}
+          <div className="bodyHeading">
+            <h1>Leadership and Activities</h1>
+          </div>
+          <div>
+            {resume["activities"].map((item) => (
+              <div key={Math.random()} className="activitiesItem">
+                <div className="companyAndLocation">
+                  <div className="company">{item.organization}</div>
+                  <div className="location">{item.location}</div>
+                </div>
+                <div className="positionAndDates">
+                  <div className="position">{item.position}</div>
+                  <div className="dates">
+                    <span className="startDate">{item.startDate}</span>
+                    <span> - </span>
+                    <span className="endDate">{item.endDate}</span>
+                  </div>
+                </div>
+                <div className="description">
+                  {item.description}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="bodySection" id="skillsPreview">
-          <h1>Skills and Interests</h1>
-          {resume["skills"].map((item) => (
-            <div key={Math.random()} className="skillsItem">
-              <div className="skill">{item.skill}</div>
-            </div>
-          ))}
+          <div className="bodyHeading">
+            <h1>Skills and Interests</h1>
+          </div>
+          <div>
+            {resume["skills"].map((item) => (
+              <div key={Math.random()} className="skillsItem">
+                <div className="skill">{item.skill}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
