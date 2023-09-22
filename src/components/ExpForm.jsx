@@ -9,7 +9,7 @@ function ExpForm({ resume, index, handleInput, category, toggleShowForm }) {
   }
 
   // Call toggleShowForm on the parent component
-  const cancelForm = () => {
+  const doneForm = () => {
     // Set showForm to false and indexToShow to -1
     toggleShowForm(-1);
   };
@@ -83,9 +83,8 @@ function ExpForm({ resume, index, handleInput, category, toggleShowForm }) {
         ></input>
       </label>
       <div className="btnContainer">
+        <Button id="doneBtn" label="Done" handleClick={doneForm} />
         <Button id="deleteBtn" label="Delete" />
-        <Button id="cancelBtn" label="Cancel" handleClick={cancelForm} />
-        <Button id="saveBtn" label="Save" />
       </div>
     </>
   );

@@ -12,8 +12,8 @@ function Activities({ resume, handleInput, category }) {
 
   return (
     <>
-      <div id="activities">
-        <summary>Leadership and activities</summary>
+      <div className="formCategory" id="activities">
+        <h2>Leadership and activities</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (

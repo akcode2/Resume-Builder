@@ -12,8 +12,8 @@ function Experience({ resume, handleInput, category }) {
 
   return (
     <>
-      <div id="experience">
-        <summary>Experience</summary>
+      <div className="formCategory" id="experience">
+        <h2>Experience</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (

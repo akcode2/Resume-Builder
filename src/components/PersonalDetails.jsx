@@ -2,8 +2,9 @@ function PersonalDetails({ resume, handleDetailsInput }) {
   return (
     <>
       <div className="formCategory" id="personalDetails">
+        <h2> Personal details</h2>
         <label>
-          Full name:{" "}
+          Full name{" "}
           <input
             name="fullName"
             type="text"
@@ -12,7 +13,7 @@ function PersonalDetails({ resume, handleDetailsInput }) {
           ></input>
         </label>
         <label>
-          Email:{" "}
+          Email{" "}
           <input
             name="email"
             type="email"
@@ -21,7 +22,7 @@ function PersonalDetails({ resume, handleDetailsInput }) {
           ></input>
         </label>
         <label>
-          Phone number:{" "}
+          Phone number{" "}
           <input
             name="phoneNumber"
             type="tel"
@@ -30,7 +31,7 @@ function PersonalDetails({ resume, handleDetailsInput }) {
           ></input>
         </label>
         <label>
-          Address:{" "}
+          Address{" "}
           <input
             name="address"
             type="text"

@@ -15,7 +15,7 @@ function ActivitiesForm({
   }
 
   // Call toggleShowForm on the parent component
-  const cancelForm = () => {
+  const doneForm = () => {
     // Set showForm to false and indexToShow to -1
     toggleShowForm(-1);
   };
@@ -89,9 +89,8 @@ function ActivitiesForm({
         ></input>
       </label>
       <div className="btnContainer">
+        <Button id="doneBtn" label="Done" handleClick={doneForm} />
         <Button id="deleteBtn" label="Delete" />
-        <Button id="cancelBtn" label="Cancel" handleClick={cancelForm} />
-        <Button id="saveBtn" label="Save" />
       </div>
     </>
   );

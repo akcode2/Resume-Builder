@@ -12,8 +12,8 @@ function Education({ resume, handleInput, category }) {
 
   return (
     <>
-      <div id="education">
-        <summary>Education</summary>
+      <div className="formCategory" id="education">
+        <h2>Education</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (

@@ -12,8 +12,8 @@ function Skills({ resume, handleInput, category }) {
 
   return (
     <>
-      <div id="skills">
-        <summary>Skills and interests</summary>
+      <div className="formCategory" id="skills">
+        <h2>Skills and interests</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
