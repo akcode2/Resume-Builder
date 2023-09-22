@@ -12,7 +12,7 @@ function Experience({ resume, handleInput, category }) {
 
   return (
     <>
-      <details id="experience">
+      <div id="experience">
         <summary>Experience</summary>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
@@ -39,7 +39,7 @@ function Experience({ resume, handleInput, category }) {
             </button>
           )}
         </div>
-      </details>
+      </div>
     </>
   );
 }

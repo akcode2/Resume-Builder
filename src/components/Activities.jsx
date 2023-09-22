@@ -12,7 +12,7 @@ function Activities({ resume, handleInput, category }) {
 
   return (
     <>
-      <details id="activities">
+      <div id="activities">
         <summary>Leadership and activities</summary>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
@@ -42,7 +42,7 @@ function Activities({ resume, handleInput, category }) {
             </button>
           )}
         </div>
-      </details>
+      </div>
     </>
   );
 }
