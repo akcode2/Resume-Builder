@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ExpForm from "./ExpForm.jsx";
 
-function Experience({ resume, handleInput, category }) {
+function Experience({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
   const [indexToShow, setIndexToShow] = useState(-1);
 
@@ -23,12 +23,13 @@ function Experience({ resume, handleInput, category }) {
               handleInput={handleInput}
               category={category}
               toggleShowForm={toggleShowForm}
+              deleteEntry={deleteEntry}
             />
           )}
           {/* Otherwise show list of experience as buttons */}
           {!showForm &&
             resume["experience"].map((item, index) => (
-              <button key={item.company} onClick={() => toggleShowForm(index)}>
+              <button key={Math.random()} onClick={() => toggleShowForm(index)}>
                 {item.company}
               </button>
             ))}

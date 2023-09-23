@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EduForm from "./EduForm.jsx";
 
-function Education({ resume, handleInput, category }) {
+function Education({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
   const [indexToShow, setIndexToShow] = useState(-1);
 
@@ -23,6 +23,7 @@ function Education({ resume, handleInput, category }) {
               handleInput={handleInput}
               category={category}
               toggleShowForm={toggleShowForm} // Pass toggleShowForm as a prop to allow form to be canceled
+              deleteEntry={deleteEntry}
             />
           )}
           {/* Otherwise show list of institutions as buttons */}
@@ -34,7 +35,8 @@ function Education({ resume, handleInput, category }) {
             ))}
           {/* Afterwards, show add button to add institution */}
           {!showForm && (
-            <button id="addInstitution" onClick={() => toggleShowForm()}>
+            // Use array.length as the index so that we can extend the array
+            <button id="addInstitution" onClick={() => toggleShowForm(resume[category].length)}> 
               + Institution
             </button>
           )}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ActivitiesForm from "./ActivitiesForm.jsx";
 
-function Activities({ resume, handleInput, category }) {
+function Activities({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
   const [indexToShow, setIndexToShow] = useState(-1);
 
@@ -23,13 +23,14 @@ function Activities({ resume, handleInput, category }) {
               handleInput={handleInput}
               category={category}
               toggleShowForm={toggleShowForm}
+              deleteEntry={deleteEntry}
             />
           )}
           {/* Otherwise show list of activities as buttons */}
           {!showForm &&
             resume["activities"].map((item, index) => (
               <button
-                key={item.organization}
+                key={Math.random()}
                 onClick={() => toggleShowForm(index)}
               >
                 {item.organization}

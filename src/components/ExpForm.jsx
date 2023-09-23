@@ -1,7 +1,14 @@
 import Button from "./Button.jsx";
 
 // Replace the contents of the <details> element with a form
-function ExpForm({ resume, index, handleInput, category, toggleShowForm }) {
+function ExpForm({
+  resume,
+  index,
+  handleInput,
+  category,
+  toggleShowForm,
+  deleteEntry,
+}) {
   let emptyForm = true;
   // 0 is falsy, handle that case
   if (index >= 0) {
@@ -11,6 +18,12 @@ function ExpForm({ resume, index, handleInput, category, toggleShowForm }) {
   // Call toggleShowForm on the parent component
   const doneForm = () => {
     // Set showForm to false and indexToShow to -1
+    toggleShowForm(-1);
+  };
+
+  const deleteAndDone = () => {
+    console.log(`deleting index: ${index}`);
+    deleteEntry("experience", index);
     toggleShowForm(-1);
   };
 
@@ -84,7 +97,7 @@ function ExpForm({ resume, index, handleInput, category, toggleShowForm }) {
       </label>
       <div className="btnContainer">
         <Button id="doneBtn" label="Done" handleClick={doneForm} />
-        <Button id="deleteBtn" label="Delete" />
+        <Button id="deleteBtn" label="Delete" handleClick={deleteAndDone}/>
       </div>
     </>
   );

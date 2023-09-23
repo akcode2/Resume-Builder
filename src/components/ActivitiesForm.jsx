@@ -7,6 +7,7 @@ function ActivitiesForm({
   handleInput,
   category,
   toggleShowForm,
+  deleteEntry,
 }) {
   let emptyForm = true;
   // 0 is falsy, handle that case
@@ -17,6 +18,12 @@ function ActivitiesForm({
   // Call toggleShowForm on the parent component
   const doneForm = () => {
     // Set showForm to false and indexToShow to -1
+    toggleShowForm(-1);
+  };
+
+  const deleteAndDone = () => {
+    console.log(`deleting index: ${index}`);
+    deleteEntry("activities", index);
     toggleShowForm(-1);
   };
 
@@ -34,11 +41,11 @@ function ActivitiesForm({
         ></input>
       </label>
       <label>
-        Position or title
+        Role
         <input
           name="position"
           type="text"
-          value={emptyForm ? "" : resume[category][index].position}
+          value={emptyForm ? "" : resume[category][index].role}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -90,7 +97,7 @@ function ActivitiesForm({
       </label>
       <div className="btnContainer">
         <Button id="doneBtn" label="Done" handleClick={doneForm} />
-        <Button id="deleteBtn" label="Delete" />
+        <Button id="deleteBtn" label="Delete" handleClick={deleteAndDone}/>
       </div>
     </>
   );

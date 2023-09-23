@@ -20,15 +20,13 @@ function App() {
       {
         school: "Harvard Business School",
         degree: "Master of Business Administration (MBA)",
-        startDate: 1991,
-        endDate: "May 2010",
+        gradDate: "May 2010",
         location: "Boston, MA",
       },
       {
         school: "Wharton School of Business, University of Pennsylvania",
         degree: "Bachelor of Business Administration",
-        startDate: 2021,
-        endDate: "May 2008",
+        gradDate: "May 2008",
         location: "Philadelphia, PA",
       },
     ],
@@ -84,8 +82,17 @@ function App() {
       },
     ],
     skills: [
-      {Skills: ["Strategic Planning", "Leadership", "Financial Analysis", "Market Research", "Negotiation", "Marketing Strategy"],
-       Interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"] },
+      {
+        Skills: [
+          "Strategic Planning",
+          "Leadership",
+          "Financial Analysis",
+          "Market Research",
+          "Negotiation",
+          "Marketing Strategy",
+        ],
+        Interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
+      },
     ],
   });
 
@@ -119,6 +126,35 @@ function App() {
     setResume(updatedResume);
   };
 
+  const deleteEntry = (category, index) => {
+    let updatedResume;
+    if (
+      category === "education" ||
+      category === "experience" ||
+      category === "activities"
+    ) {
+      if (resume[category].length === 1) {
+        console.log(`Before splicing: ${updatedResume}`);
+        updatedResume = {
+          ...resume,
+          [category]: [],
+        };
+        console.log(`After splicing: ${JSON.stringify(updatedResume)}`);
+      } else {
+        console.log(`Length not === 1. Before splicing: ${updatedResume}`);
+        updatedResume = {
+          ...resume,
+          [category]: [
+            ...resume[category].slice(0, index),
+            ...resume[category].slice(index + 1)
+          ],
+        };
+        console.log(`Length not  ==== 1. After splicing: ${JSON.stringify(updatedResume)}`);
+      }
+    }
+    setResume(updatedResume);
+  };
+
   return (
     <>
       <div className="formControls">
@@ -130,16 +166,19 @@ function App() {
         <Education
           resume={resume}
           handleInput={handleInput}
+          deleteEntry={deleteEntry}
           category={"education"}
         />
         <Experience
           resume={resume}
           handleInput={handleInput}
+          deleteEntry={deleteEntry}
           category={"experience"}
         />
         <Activities
           resume={resume}
           handleInput={handleInput}
+          deleteEntry={deleteEntry}
           category={"activities"}
         />
         <Skills resume={resume} handleInput={handleInput} category={"skills"} />

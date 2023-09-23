@@ -1,16 +1,34 @@
 import Button from "./Button.jsx";
 
 // Replace the contents of the <details> element with a form
-function EduForm({ resume, index, handleInput, category, toggleShowForm }) {
-  let emptyForm = true;
-  // 0 is falsy, handle that case
-  if (index >= 0) {
-    emptyForm = false;
+function EduForm({
+  resume,
+  index,
+  handleInput,
+  category,
+  toggleShowForm,
+  deleteEntry,
+}) {
+  // If object does not exist at index, create it
+  if (resume[category].length === index) {
+    resume[category][index] = {
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    };
   }
 
   // Call toggleShowForm on the parent component
   const doneForm = () => {
     // Set showForm to false and indexToShow to -1
+    toggleShowForm(-1);
+  };
+
+  const deleteAndDone = () => {
+    console.log(`deleting index: ${index}`);
+    deleteEntry("education", index);
     toggleShowForm(-1);
   };
 
@@ -21,7 +39,7 @@ function EduForm({ resume, index, handleInput, category, toggleShowForm }) {
         <input
           name="school"
           type="text"
-          value={emptyForm ? "" : resume[category][index].school}
+          value={resume[category][index].school}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -32,29 +50,18 @@ function EduForm({ resume, index, handleInput, category, toggleShowForm }) {
         <input
           name="degree"
           type="text"
-          value={emptyForm ? "" : resume[category][index].degree}
+          value={resume[category][index].degree}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
         ></input>
       </label>
       <label>
-        Start date
+        Graduation date
         <input
-          name="startDate"
+          name="gradDate"
           type="text"
-          value={emptyForm ? "" : resume[category][index].startDate}
-          onChange={(e) =>
-            handleInput(e.target.name, e.target.value, category, index)
-          }
-        ></input>
-      </label>
-      <label>
-        End date
-        <input
-          name="endDate"
-          type="text"
-          value={emptyForm ? "" : resume[category][index].endDate}
+          value={resume[category][index].gradDate}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -65,7 +72,7 @@ function EduForm({ resume, index, handleInput, category, toggleShowForm }) {
         <input
           name="location"
           type="text"
-          value={emptyForm ? "" : resume[category][index].location}
+          value={resume[category][index].location}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -73,7 +80,7 @@ function EduForm({ resume, index, handleInput, category, toggleShowForm }) {
       </label>
       <div className="btnContainer">
         <Button id="donelBtn" label="Done" handleClick={doneForm} />
-        <Button id="deleteBtn" label="Delete" />
+        <Button id="deleteBtn" label="Delete" handleClick={deleteAndDone} />
       </div>
     </>
   );

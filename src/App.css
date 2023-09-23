@@ -34,6 +34,7 @@ body {
 .formCategory > h2 {
   align-self: start;
   line-height: 1rem;
+  margin: 1rem 0.5rem;
 }
 
 label {
@@ -43,7 +44,7 @@ label {
   gap: 0.5rem;
   font-weight: bold;
   font-size: 1.1rem;
-  margin: 0.6rem 0.5rem;
+  margin: 0.25rem 0.5rem;
 }
 
 input {
@@ -98,6 +99,7 @@ input {
   text-align: center;
   background-color: #d7d2cb;
   font-family: "Merriweather";
+  font-size: 1.2rem;
 }
 
 .schoolAndLocation,
@@ -129,6 +131,11 @@ input {
   padding: 0 2rem;
 }
 
+.expItem,
+.activitiesItem {
+  margin: 1rem;
+}
+
 button {
   display: flex;
   width: 40ch;
@@ -148,6 +155,6 @@ button {
   gap: 1ch;
   align-items: center;
   width: 10ch;
-  padding: .5ch;
+  padding: 0.5ch;
   line-height: 1ch;
 }
