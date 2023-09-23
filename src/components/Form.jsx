@@ -35,7 +35,7 @@ function Form({
   let formFields;
   switch (category) {
     case "education":
-        formFields = ["school", "degree"]
+        formFields = ["school", "degree", "gradDate", "location"]
   }
   return()
 }
