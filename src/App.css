@@ -158,3 +158,9 @@ button {
   padding: 0.5ch;
   line-height: 1ch;
 }
+
+.skillInterest {
+  width: fit-content;
+  display: inline;
+  margin: .5ch;
+}

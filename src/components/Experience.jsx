@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ExpForm from "./ExpForm.jsx";
+import Form from "./Form.jsx";
 
 function Experience({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
@@ -17,7 +18,7 @@ function Experience({ resume, handleInput, deleteEntry, category }) {
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
-            <ExpForm
+            <Form
               resume={resume}
               index={indexToShow}
               handleInput={handleInput}
@@ -29,13 +30,16 @@ function Experience({ resume, handleInput, deleteEntry, category }) {
           {/* Otherwise show list of experience as buttons */}
           {!showForm &&
             resume["experience"].map((item, index) => (
-              <button key={Math.random()} onClick={() => toggleShowForm(index)}>
+              <button key={`${item.company}_${item.position}`} onClick={() => toggleShowForm(index)}>
                 {item.company}
               </button>
             ))}
           {/* Afterwards, show add button to add experience */}
           {!showForm && (
-            <button id="addExperience" onClick={() => toggleShowForm()}>
+            <button
+              id="addExperience"
+              onClick={() => toggleShowForm(resume[category].length)}
+            >
               + Company
             </button>
           )}

@@ -14,8 +14,7 @@ function EduForm({
     resume[category][index] = {
       school: "",
       degree: "",
-      startDate: "",
-      endDate: "",
+      gradDate: "",
       location: "",
     };
   }
@@ -39,7 +38,7 @@ function EduForm({
         <input
           name="school"
           type="text"
-          value={resume[category][index].school}
+          value={resume[category][index][school]}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -50,7 +49,7 @@ function EduForm({
         <input
           name="degree"
           type="text"
-          value={resume[category][index].degree}
+          value={resume[category][index][degree]}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -61,7 +60,7 @@ function EduForm({
         <input
           name="gradDate"
           type="text"
-          value={resume[category][index].gradDate}
+          value={resume[category][index][gradDate]}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
@@ -72,7 +71,7 @@ function EduForm({
         <input
           name="location"
           type="text"
-          value={resume[category][index].location}
+          value={resume[category][index][location]}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }

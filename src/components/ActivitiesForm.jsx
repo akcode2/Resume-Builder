@@ -43,7 +43,7 @@ function ActivitiesForm({
       <label>
         Role
         <input
-          name="position"
+          name="role"
           type="text"
           value={emptyForm ? "" : resume[category][index].role}
           onChange={(e) =>

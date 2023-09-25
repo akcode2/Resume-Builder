@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ActivitiesForm from "./ActivitiesForm.jsx";
+import Form from "./Form.jsx";
 
 function Activities({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
@@ -17,7 +18,7 @@ function Activities({ resume, handleInput, deleteEntry, category }) {
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
-            <ActivitiesForm
+            <Form
               resume={resume}
               index={indexToShow}
               handleInput={handleInput}
@@ -30,7 +31,7 @@ function Activities({ resume, handleInput, deleteEntry, category }) {
           {!showForm &&
             resume["activities"].map((item, index) => (
               <button
-                key={Math.random()}
+                key={`${item.organization}_${item.role}`}
                 onClick={() => toggleShowForm(index)}
               >
                 {item.organization}
@@ -38,7 +39,10 @@ function Activities({ resume, handleInput, deleteEntry, category }) {
             ))}
           {/* Afterwards, show add button to add activity */}
           {!showForm && (
-            <button id="addActivity" onClick={() => toggleShowForm()}>
+            <button
+              id="addActivity"
+              onClick={() => toggleShowForm(resume[category].length)}
+            >
               + Leadership / Activity
             </button>
           )}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EduForm from "./EduForm.jsx";
+import Form from "./Form.jsx";
 
 function Education({ resume, handleInput, deleteEntry, category }) {
   const [showForm, setShowForm] = useState(false);
@@ -17,7 +18,7 @@ function Education({ resume, handleInput, deleteEntry, category }) {
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
           {showForm && (
-            <EduForm
+            <Form
               resume={resume}
               index={indexToShow}
               handleInput={handleInput}
@@ -28,15 +29,21 @@ function Education({ resume, handleInput, deleteEntry, category }) {
           )}
           {/* Otherwise show list of institutions as buttons */}
           {!showForm &&
-            resume.education.map((item, index) => (
-              <button key={item.school} onClick={() => toggleShowForm(index)}>
+            resume["education"].map((item, index) => (
+              <button
+                key={`${item.school}_${item.degree}`}
+                onClick={() => toggleShowForm(index)}
+              >
                 {item.school}
               </button>
             ))}
           {/* Afterwards, show add button to add institution */}
           {!showForm && (
             // Use array.length as the index so that we can extend the array
-            <button id="addInstitution" onClick={() => toggleShowForm(resume[category].length)}> 
+            <button
+              id="addInstitution"
+              onClick={() => toggleShowForm(resume[category].length)}
+            >
               + Institution
             </button>
           )}

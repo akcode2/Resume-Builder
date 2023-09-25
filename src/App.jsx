@@ -81,9 +81,9 @@ function App() {
           "Shared expertise and insights on business strategies, leadership, and innovation at various industry conferences.",
       },
     ],
-    skills: [
+    skills: 
       {
-        Skills: [
+        skills: [
           "Strategic Planning",
           "Leadership",
           "Financial Analysis",
@@ -91,9 +91,8 @@ function App() {
           "Negotiation",
           "Marketing Strategy",
         ],
-        Interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
+        interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
       },
-    ],
   });
 
   // 1. Spread properties from resume into updatedResume,
@@ -128,6 +127,7 @@ function App() {
 
   const deleteEntry = (category, index) => {
     let updatedResume;
+    // Use a different deletion method for skills section
     if (
       category === "education" ||
       category === "experience" ||
@@ -208,9 +208,7 @@ function App() {
                 <div className="degreeAndDates">
                   <div className="degree">{item.degree}</div>
                   <div className="dates">
-                    <span className="startDate">{item.startDate}</span>
-                    <span> - </span>
-                    <span className="endDate">{item.endDate}</span>
+                    <span className="gradDate">{item.gradDate}</span>
                   </div>
                 </div>
               </div>
@@ -269,12 +267,11 @@ function App() {
           <div className="bodyHeading">
             <h1>Skills and Interests</h1>
           </div>
-          <div>
-            {resume["skills"].map((item) => (
-              <div key={Math.random()} className="skillsItem">
-                <div className="skill">{item.skill}</div>
-              </div>
-            ))}
+          <div id="displayedSkills">
+            Skills: {resume["skills"].skills.join(', ')}
+          </div>
+          <div id="displayedInterests">
+          Interests: {resume["skills"].interests.join(', ')}
           </div>
         </div>
       </div>
