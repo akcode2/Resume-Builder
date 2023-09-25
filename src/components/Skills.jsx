@@ -18,6 +18,7 @@ function Skills({ resume, handleInput, category }) {
             name="skills"
             type="text"
             />
+            <input type="submit"></input>
           </form>
 
           
