@@ -155,6 +155,39 @@ function App() {
     setResume(updatedResume);
   };
 
+  const handleSkillsSubmit = (skillsOrInterests, value) => {
+    console.log("handleSkillsSubmit was called");
+    const updatedResume = {
+      ...resume,
+      "skills": {
+        ...resume["skills"],
+        [skillsOrInterests]: [
+          ...resume["skills"][skillsOrInterests],
+          value
+        ]
+      }
+    }
+
+    setResume(updatedResume);
+  }
+
+  const handleDeleteTag = (skillsOrInterests, index) => {
+    // Make a copy of the array and splice out the tag
+    const arr = resume["skills"][skillsOrInterests];
+    arr.splice(index, 1);
+    // Make a copy of resume and update it
+    const updatedResume = {
+      ...resume,
+      "skills": {
+        ...resume["skills"],
+        [skillsOrInterests]: arr
+      }
+    }
+    // Update the state variable
+    setResume(updatedResume);
+    console.log(resume);
+  }
+
   return (
     <>
       <div className="formControls">
@@ -181,7 +214,7 @@ function App() {
           deleteEntry={deleteEntry}
           category={"activities"}
         />
-        <Skills resume={resume} handleInput={handleInput} category={"skills"} />
+        <Skills resume={resume} handleSkillsSubmit={handleSkillsSubmit} handleDeleteTag={handleDeleteTag}/>
       </div>
       <div id="preview" className="preview">
         <div id="header">

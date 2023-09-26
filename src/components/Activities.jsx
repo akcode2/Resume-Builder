@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ActivitiesForm from "./ActivitiesForm.jsx";
 import Form from "./Form.jsx";
 
 function Activities({ resume, handleInput, deleteEntry, category }) {

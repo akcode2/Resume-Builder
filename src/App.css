@@ -159,8 +159,31 @@ button {
   line-height: 1ch;
 }
 
-.skillInterest {
+.tag {
   width: fit-content;
-  display: inline;
+  display: inline-block;
   margin: .5ch;
+  border: 1px solid black;
+}
+
+/* Tag content */
+.skillInterest {
+display: flex;
+line-height: .75rem;
+align-items: center;
+padding-left: .5ch;
+}
+
+/* Button for deleting a tag */
+.deleteSkillInterest {
+  display: inline;
+  width: min-content;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  height: 1ch;
 }

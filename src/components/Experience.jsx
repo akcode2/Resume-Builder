@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ExpForm from "./ExpForm.jsx";
 import Form from "./Form.jsx";
 
 function Experience({ resume, handleInput, deleteEntry, category }) {

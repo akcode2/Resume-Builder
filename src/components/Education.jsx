@@ -1,5 +1,4 @@
 import { useState } from "react";
-import EduForm from "./EduForm.jsx";
 import Form from "./Form.jsx";
 
 function Education({ resume, handleInput, deleteEntry, category }) {
