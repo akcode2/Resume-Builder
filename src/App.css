@@ -1,20 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;700&display=swap");
 body {
-  background-color: #dee2e6;
+  background-color: #F5F5F5;
 }
 #root {
   display: flex;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100vw;
+  height: 100vh;
 }
 
-.formControls {
+#formControls {
   display: flex;
   flex-direction: column;
   width: 65ch;
   font-family: "Roboto";
 }
+
+#preview {
+  width: 539px;
+  height: 763px;
+  background-color: #8E8787;
+  /* A4 page aspect ratio */
+  aspect-ratio: 1.414 / 1;
+  overflow: scroll;
+}
+
 
 .formCategory {
   /* Card styling */

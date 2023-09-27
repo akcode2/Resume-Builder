@@ -81,18 +81,17 @@ function App() {
           "Shared expertise and insights on business strategies, leadership, and innovation at various industry conferences.",
       },
     ],
-    skills: 
-      {
-        skills: [
-          "Strategic Planning",
-          "Leadership",
-          "Financial Analysis",
-          "Market Research",
-          "Negotiation",
-          "Marketing Strategy",
-        ],
-        interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
-      },
+    skills: {
+      skills: [
+        "Strategic Planning",
+        "Leadership",
+        "Financial Analysis",
+        "Market Research",
+        "Negotiation",
+        "Marketing Strategy",
+      ],
+      interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
+    },
   });
 
   // 1. Spread properties from resume into updatedResume,
@@ -146,10 +145,12 @@ function App() {
           ...resume,
           [category]: [
             ...resume[category].slice(0, index),
-            ...resume[category].slice(index + 1)
+            ...resume[category].slice(index + 1),
           ],
         };
-        console.log(`Length not  ==== 1. After splicing: ${JSON.stringify(updatedResume)}`);
+        console.log(
+          `Length not  ==== 1. After splicing: ${JSON.stringify(updatedResume)}`
+        );
       }
     }
     setResume(updatedResume);
@@ -159,17 +160,14 @@ function App() {
     console.log("handleSkillsSubmit was called");
     const updatedResume = {
       ...resume,
-      "skills": {
+      skills: {
         ...resume["skills"],
-        [skillsOrInterests]: [
-          ...resume["skills"][skillsOrInterests],
-          value
-        ]
-      }
-    }
+        [skillsOrInterests]: [...resume["skills"][skillsOrInterests], value],
+      },
+    };
 
     setResume(updatedResume);
-  }
+  };
 
   const handleDeleteTag = (skillsOrInterests, index) => {
     // Make a copy of the array and splice out the tag
@@ -178,43 +176,19 @@ function App() {
     // Make a copy of resume and update it
     const updatedResume = {
       ...resume,
-      "skills": {
+      skills: {
         ...resume["skills"],
-        [skillsOrInterests]: arr
-      }
-    }
+        [skillsOrInterests]: arr,
+      },
+    };
     // Update the state variable
     setResume(updatedResume);
-    console.log(resume);
-  }
+  };
 
   return (
     <>
-      <div className="formControls">
-        <PersonalDetails
-          resume={resume}
-          handleDetailsInput={handleDetailsInput}
-          category={"personalDetails"}
-        />
-        <Education
-          resume={resume}
-          handleInput={handleInput}
-          deleteEntry={deleteEntry}
-          category={"education"}
-        />
-        <Experience
-          resume={resume}
-          handleInput={handleInput}
-          deleteEntry={deleteEntry}
-          category={"experience"}
-        />
-        <Activities
-          resume={resume}
-          handleInput={handleInput}
-          deleteEntry={deleteEntry}
-          category={"activities"}
-        />
-        <Skills resume={resume} handleSkillsSubmit={handleSkillsSubmit} handleDeleteTag={handleDeleteTag}/>
+      <div id="formControls">
+
       </div>
       <div id="preview" className="preview">
         <div id="header">
@@ -301,10 +275,10 @@ function App() {
             <h1>Skills and Interests</h1>
           </div>
           <div id="displayedSkills">
-            Skills: {resume["skills"].skills.join(', ')}
+            Skills: {resume["skills"].skills.join(", ")}
           </div>
           <div id="displayedInterests">
-          Interests: {resume["skills"].interests.join(', ')}
+            Interests: {resume["skills"].interests.join(", ")}
           </div>
         </div>
       </div>

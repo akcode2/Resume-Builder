@@ -29,3 +29,33 @@ To Do:
     * Commit those changes if a new form is initialized
 * Implement a delete button
 * Remove save button
+
+
+        <PersonalDetails
+          resume={resume}
+          handleDetailsInput={handleDetailsInput}
+          category={"personalDetails"}
+        />
+        <Education
+          resume={resume}
+          handleInput={handleInput}
+          deleteEntry={deleteEntry}
+          category={"education"}
+        />
+        <Experience
+          resume={resume}
+          handleInput={handleInput}
+          deleteEntry={deleteEntry}
+          category={"experience"}
+        />
+        <Activities
+          resume={resume}
+          handleInput={handleInput}
+          deleteEntry={deleteEntry}
+          category={"activities"}
+        />
+        <Skills
+          resume={resume}
+          handleSkillsSubmit={handleSkillsSubmit}
+          handleDeleteTag={handleDeleteTag}
+        />
