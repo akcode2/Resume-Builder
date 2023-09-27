@@ -86,7 +86,7 @@ function Preview({ resume }) {
             ))}
           </div>
         </div>
-        
+
         <div className="bodySection" id="skillsPreview">
           <div className="bodyHeading">
             <h1>Skills and Interests</h1>

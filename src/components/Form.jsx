@@ -9,18 +9,6 @@ function Form({
   toggleShowForm,
   deleteEntry,
 }) {
-  // Call toggleShowForm on the parent component
-  const doneWithForm = () => {
-    // Set showForm to false and indexToShow to -1
-    toggleShowForm(-1);
-  };
-
-  const deleteAndDone = () => {
-    console.log(`deleting index: ${index}`);
-    deleteEntry("education", index);
-    toggleShowForm(-1);
-  };
-
   let formFields;
   let formLabels;
   switch (category) {
@@ -71,6 +59,32 @@ function Form({
     default:
       console.log("Invalid category");
   }
+
+  // Call toggleShowForm on the parent component
+  const doneWithForm = () => {
+    let emptyForm = true;
+    // If even one field has a value, keep the entry and toggleShowForm
+    formFields.forEach((field) => {
+      if (resume[category][index][field] !== "") {
+        // Set showForm to false and indexToShow to -1
+        toggleShowForm(-1);
+        emptyForm = false;
+        // Return early
+        return;
+      }
+    });
+    // Otherwise all fields are empty. Delete the entry and then toggleShowForm.
+    if (emptyForm) {
+      deleteEntry(category, index);
+      toggleShowForm(-1);
+    }
+  };
+
+  const deleteAndDone = () => {
+    console.log(`deleting index: ${index}`);
+    deleteEntry(category, index);
+    toggleShowForm(-1);
+  };
 
   // If object does not exist at index, create it
   if (!resume[category][index]) {

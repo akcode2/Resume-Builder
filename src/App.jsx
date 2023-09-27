@@ -147,14 +147,11 @@ function App() {
       category === "activities"
     ) {
       if (resume[category].length === 1) {
-        console.log(`Before splicing: ${updatedResume}`);
         updatedResume = {
           ...resume,
           [category]: [],
         };
-        console.log(`After splicing: ${JSON.stringify(updatedResume)}`);
       } else {
-        console.log(`Length not === 1. Before splicing: ${updatedResume}`);
         updatedResume = {
           ...resume,
           [category]: [
@@ -162,9 +159,6 @@ function App() {
             ...resume[category].slice(index + 1),
           ],
         };
-        console.log(
-          `Length not  ==== 1. After splicing: ${JSON.stringify(updatedResume)}`
-        );
       }
     }
     setResume(updatedResume);
