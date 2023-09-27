@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import "./styles/Preview.css";
+import "./styles/FormControls.css";
 import PersonalDetails from "./components/PersonalDetails.jsx";
 import Education from "./components/Education.jsx";
 import Experience from "./components/Experience.jsx";
@@ -185,10 +186,48 @@ function App() {
     setResume(updatedResume);
   };
 
+  const formLabels = [
+    "Personal details",
+    "Education",
+    "Experience",
+    "Leadership & Activities",
+    "Skills & Interests",
+  ];
+  const formCategories = [
+    "personalDetails",
+    "education",
+    "experience",
+    "activities",
+    "skills",
+  ];
+
+  // Remember which form category should be active
+  const [activeCat, setActiveCat] = useState("personalDetails");
+
+  // const generateForm = (category) => {
+  //   switch (category) {
+  //     case "personalDetails":
+
+  //   }
+  // }
+
   return (
     <>
       <div id="formControls">
-
+        <div id="formNav">
+          {formLabels.map((label, i) => (
+            <button
+              key={`nav-${label}`}
+              className={`navItem ${
+                activeCat === formCategories[i] ? "active" : ""
+              }
+              `}
+              onClick={() => setActiveCat(`${formCategories[i]}`)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
       <div id="preview" className="preview">
         <div id="header">

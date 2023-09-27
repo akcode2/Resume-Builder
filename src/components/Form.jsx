@@ -78,28 +78,25 @@ function Form({
     // Create properties from formFields array
     formFields.forEach((field) => {
       newObj[field] = "";
-    })
+    });
     resume[category][index] = newObj;
-  };
-  
+  }
 
   const generateFormInputs = (category, index) => {
-    return (
-      formLabels.map((label, i) => (
-        <label key={formLabels[i]}>
-          {label}
-          <input
+    return formLabels.map((label, i) => (
+      <label key={formLabels[i]}>
+        {label}
+        <input
           name={formFields[i]}
           type="text"
           value={resume[category][index][formFields[i]]}
           onChange={(e) =>
             handleInput(e.target.name, e.target.value, category, index)
           }
-          />
-        </label>
-      ))
-    )
-  }
+        />
+      </label>
+    ));
+  };
 
   return (
     <>
