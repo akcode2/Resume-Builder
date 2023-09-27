@@ -12,7 +12,7 @@ function Education({ resume, handleInput, deleteEntry, category }) {
 
   return (
     <>
-      <div className="formCategory" id="education">
+      <div className="form" id="education">
         <h2>Education</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}

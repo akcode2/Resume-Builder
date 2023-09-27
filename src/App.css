@@ -34,8 +34,8 @@ body {
 
 
 
-.formCategory {
-  /* Card styling */
+/* .formCategory {
+
   background-color: #f8f9fa;
   width: 45ch;
   padding: 1rem;
@@ -47,7 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} */
 
 .formCategory > h2 {
   align-self: start;

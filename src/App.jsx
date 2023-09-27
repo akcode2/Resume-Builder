@@ -1,12 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import "./styles/Preview.css";
-import "./styles/FormControls.css";
-import PersonalDetails from "./components/PersonalDetails.jsx";
-import Education from "./components/Education.jsx";
-import Experience from "./components/Experience.jsx";
-import Activities from "./components/Activities.jsx";
-import Skills from "./components/Skills.jsx";
+import FormControls from "./components/FormControls.jsx";
+import Preview from "./components/Preview.jsx";
 
 function App() {
   // Resume is an object with nested objects for each section
@@ -95,6 +90,37 @@ function App() {
     },
   });
 
+  // Remember which form category should be active
+  const [activeCat, setActiveCat] = useState("personalDetails");
+
+  const formLabels = [
+    "Personal details",
+    "Education",
+    "Experience",
+    "Leadership & Activities",
+    "Skills & Interests",
+  ];
+  const formCategories = [
+    "personalDetails",
+    "education",
+    "experience",
+    "activities",
+    "skills",
+  ];
+
+  // Handle personal details inputs
+  const handleDetailsInput = (name, value) => {
+    const fieldToUpdate = name;
+
+    let newObj = {
+      ...resume["personalDetails"],
+      [fieldToUpdate]: value,
+    };
+
+    const updatedResume = { ...resume, personalDetails: newObj };
+    setResume(updatedResume);
+  };
+
   // 1. Spread properties from resume into updatedResume,
   // 2. Access the [category] array and spread its items
   // 3. Access the object at [index] and spread its properties
@@ -109,19 +135,6 @@ function App() {
         ...resume[category].slice(index + 1),
       ],
     };
-    setResume(updatedResume);
-  };
-
-  // Handle personal details inputs
-  const handleDetailsInput = (name, value) => {
-    const fieldToUpdate = name;
-
-    let newObj = {
-      ...resume["personalDetails"],
-      [fieldToUpdate]: value,
-    };
-
-    const updatedResume = { ...resume, personalDetails: newObj };
     setResume(updatedResume);
   };
 
@@ -186,140 +199,24 @@ function App() {
     setResume(updatedResume);
   };
 
-  const formLabels = [
-    "Personal details",
-    "Education",
-    "Experience",
-    "Leadership & Activities",
-    "Skills & Interests",
-  ];
-  const formCategories = [
-    "personalDetails",
-    "education",
-    "experience",
-    "activities",
-    "skills",
-  ];
-
-  // Remember which form category should be active
-  const [activeCat, setActiveCat] = useState("personalDetails");
-
-  // const generateForm = (category) => {
-  //   switch (category) {
-  //     case "personalDetails":
-
-  //   }
-  // }
-
   return (
     <>
       <div id="formControls">
-        <div id="formNav">
-          {formLabels.map((label, i) => (
-            <button
-              key={`nav-${label}`}
-              className={`navItem ${
-                activeCat === formCategories[i] ? "active" : ""
-              }
-              `}
-              onClick={() => setActiveCat(`${formCategories[i]}`)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <FormControls
+          resume={resume}
+          activeCat={activeCat}
+          formLabels={formLabels}
+          formCategories={formCategories}
+          setActiveCat={setActiveCat}
+          handleDetailsInput={handleDetailsInput}
+          handleInput={handleInput}
+          deleteEntry={deleteEntry}
+          handleSkillsSubmit={handleSkillsSubmit}
+          handleDeleteTag={handleDeleteTag}
+        />
       </div>
-      <div id="preview" className="preview">
-        <div id="header">
-          <div className="name">{resume["personalDetails"].fullName}</div>
-          <div className="personalDetails">
-            <div className="detail">{resume["personalDetails"].email}</div>
-            <div className="detail">
-              {resume["personalDetails"].phoneNumber}
-            </div>
-            <div className="detail">{resume["personalDetails"].address}</div>
-          </div>
-        </div>
-        <div className="bodySection" id="eduPreview">
-          <div className="bodyHeading">
-            <h1>Education</h1>
-          </div>
-          <div>
-            {resume["education"].map((item) => (
-              <div key={Math.random()} className="eduItem">
-                <div className="schoolAndLocation">
-                  <div className="school">{item.school}</div>
-                  <div className="location">{item.location}</div>
-                </div>
-                <div className="degreeAndDates">
-                  <div className="degree">{item.degree}</div>
-                  <div className="dates">
-                    <span className="gradDate">{item.gradDate}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bodySection" id="expPreview">
-          <div className="bodyHeading">
-            <h1>Experience</h1>
-          </div>
-          <div>
-            {resume["experience"].map((item) => (
-              <div key={Math.random()} className="expItem">
-                <div className="companyAndLocation">
-                  <div className="company">{item.company}</div>
-                  <div className="location">{item.location}</div>
-                </div>
-                <div className="positionAndDates">
-                  <div className="position">{item.position}</div>
-                  <div className="dates">
-                    <span className="startDate">{item.startDate}</span>
-                    <span> - </span>
-                    <span className="endDate">{item.endDate}</span>
-                  </div>
-                </div>
-                <div className="description">{item.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bodySection" id="activitiesPreview">
-          <div className="bodyHeading">
-            <h1>Leadership and Activities</h1>
-          </div>
-          <div>
-            {resume["activities"].map((item) => (
-              <div key={Math.random()} className="activitiesItem">
-                <div className="companyAndLocation">
-                  <div className="company">{item.organization}</div>
-                  <div className="location">{item.location}</div>
-                </div>
-                <div className="positionAndDates">
-                  <div className="role">{item.role}</div>
-                  <div className="dates">
-                    <span className="startDate">{item.startDate}</span>
-                    <span> - </span>
-                    <span className="endDate">{item.endDate}</span>
-                  </div>
-                </div>
-                <div className="description">{item.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bodySection" id="skillsPreview">
-          <div className="bodyHeading">
-            <h1>Skills and Interests</h1>
-          </div>
-          <div id="displayedSkills">
-            Skills: {resume["skills"].skills.join(", ")}
-          </div>
-          <div id="displayedInterests">
-            Interests: {resume["skills"].interests.join(", ")}
-          </div>
-        </div>
+      <div id="preview">
+        <Preview resume={resume} />
       </div>
     </>
   );

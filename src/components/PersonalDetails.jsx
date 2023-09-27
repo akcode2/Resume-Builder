@@ -1,7 +1,7 @@
 function PersonalDetails({ resume, handleDetailsInput }) {
   return (
     <>
-      <div className="formCategory" id="personalDetails">
+      <div className="form" id="personalDetails">
         <h2> Personal details</h2>
         <label>
           Full name{" "}
