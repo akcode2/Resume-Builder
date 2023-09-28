@@ -8,14 +8,16 @@ import Skills from "./Skills.jsx";
 function FormControls({
   resume,
   activeCat,
+  setActiveCat,
   formLabels,
   formCategories,
-  setActiveCat,
   handleDetailsInput,
   handleInput,
   deleteEntry,
   handleSkillsSubmit,
   handleDeleteTag,
+  activeIndex={activeIndex},
+  setActiveIndex={setActiveIndex}
 }) {
   return (
     <>
@@ -49,6 +51,8 @@ function FormControls({
             handleInput={handleInput}
             deleteEntry={deleteEntry}
             category={"education"}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         )}
         {activeCat === "experience" && (

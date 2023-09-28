@@ -93,6 +93,13 @@ function App() {
   // Remember which form category should be active
   const [activeCat, setActiveCat] = useState("personalDetails");
 
+  // Remember the active index within a category
+  const [activeIndex, setActiveIndex] = useState({
+    education: resume["education"].length,
+    experience: resume["experience"].length,
+    activities: resume["activities"].length,
+  });
+
   const formLabels = [
     "Personal details",
     "Education",
@@ -135,6 +142,23 @@ function App() {
         ...resume[category].slice(index + 1),
       ],
     };
+    switch (category) {
+      case "education":
+        if (updatedResume["education"][index]["school"] === "") {
+          updatedResume["education"][index]["school"] = "...";
+        }
+        break;
+      case "experience":
+        if (updatedResume["experience"][index]["company"] === "") {
+          updatedResume["experience"][index]["company"] = "...";
+        }
+        break;
+      case "activities":
+        if (updatedResume["activities"][index]["organization"] === "") {
+          updatedResume["activities"][index]["organization"] = "...";
+        }
+        break;
+    }
     setResume(updatedResume);
   };
 
@@ -199,14 +223,16 @@ function App() {
         <FormControls
           resume={resume}
           activeCat={activeCat}
+          setActiveCat={setActiveCat}
           formLabels={formLabels}
           formCategories={formCategories}
-          setActiveCat={setActiveCat}
           handleDetailsInput={handleDetailsInput}
           handleInput={handleInput}
           deleteEntry={deleteEntry}
           handleSkillsSubmit={handleSkillsSubmit}
           handleDeleteTag={handleDeleteTag}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
         />
       </div>
       <div id="preview">

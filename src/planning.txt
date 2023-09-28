@@ -59,3 +59,34 @@ To Do:
           handleSkillsSubmit={handleSkillsSubmit}
           handleDeleteTag={handleDeleteTag}
         />
+
+  When you arrive at the form, it'll show current entries
+  If you start typing, the done button and the add institution buttons will only appear after entering 
+  a school/company/organization
+  If you leave without entering a school/company/organization, you can come back and your previous values will still be there
+
+  This means that form.jsx must set index to show to 
+
+  The only way to increment indexToShow is with the addInstitution or Done buttons
+  They will only appear if a school/org/company is given
+
+
+
+  Here's the user's journey:
+  They arrive at a form tab
+  If a form was in progress - either a completed entry that was being edited, or a new entry - show that form
+  Otherwise, show a new form
+
+  When they start typing into a form,
+  Create a new button in the entries column, whose label is either (...) or the school/company/org name
+
+  When they've entered a school/company/org name, display a done button
+
+  If they open a completed entry and delete the school/company/org name, then they don't have a done button and that form
+  remains the one that's in progress
+  
+
+  To fix: in Form.jsx, use setresume to create a new obj at index if it doesn't exist
+
+
+  

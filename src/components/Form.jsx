@@ -6,15 +6,19 @@ function Form({
   index,
   handleInput,
   category,
-  toggleShowForm,
   deleteEntry,
+  setIndexToShow,
+  activeIndex = { activeIndex },
+  setActiveIndex = { setActiveIndex },
 }) {
   let formFields;
   let formLabels;
+  let primaryKey;
   switch (category) {
     case "education":
       formFields = ["school", "degree", "gradDate", "location"];
       formLabels = ["School", "Degree", "Graduation date", "Location"];
+      primaryKey = "school";
       break;
     case "experience":
       formFields = [
@@ -33,6 +37,7 @@ function Form({
         "Location",
         "Description",
       ];
+      primaryKey = "company";
       break;
     case "activities":
       formFields = [
@@ -51,6 +56,7 @@ function Form({
         "Location",
         "Description",
       ];
+      primaryKey = "organization";
       break;
     case "skills":
       formFields = ["skills", "interests"];
@@ -60,30 +66,55 @@ function Form({
       console.log("Invalid category");
   }
 
-  // Call toggleShowForm on the parent component
   const doneWithForm = () => {
     let emptyForm = true;
-    // If even one field has a value, keep the entry and toggleShowForm
+    // If even one field has a value, keep the entry and show it as the most recent
     formFields.forEach((field) => {
       if (resume[category][index][field] !== "") {
-        // Set showForm to false and indexToShow to -1
-        toggleShowForm(-1);
+        // Handle empty school/company/organization
+        switch (category) {
+          case "education":
+            if (resume[category][index]["school"] === "") {
+              resume[category][index]["school"] = "A university...";
+            }
+            break;
+          case "experience":
+            if (resume[category][index]["company"] === "") {
+              resume[category][index]["company"] = "A company...";
+            }
+            break;
+          case "activities":
+            if (resume[category][index]["organization"] === "") {
+              resume[category][index]["organization"] = "An organization...";
+            }
+        }
+        // Prepare to receive a new entry
+        setActiveIndex({
+          ...activeIndex,
+          [category]: index + 1,
+        });
         emptyForm = false;
         // Return early
         return;
       }
     });
-    // Otherwise all fields are empty. Delete the entry and then toggleShowForm.
+    // Otherwise all fields are empty. Delete the entry and then show the most recent.
     if (emptyForm) {
       deleteEntry(category, index);
-      toggleShowForm(-1);
+      setActiveIndex({
+        ...activeIndex,
+        [category]: index - 1
+      })
     }
   };
 
   const deleteAndDone = () => {
     console.log(`deleting index: ${index}`);
     deleteEntry(category, index);
-    toggleShowForm(-1);
+    setActiveIndex({
+      ...activeIndex,
+      [category]: index - 1,
+    });
   };
 
   // If object does not exist at index, create it
@@ -98,25 +129,36 @@ function Form({
 
   const generateFormInputs = (category, index) => {
     return formLabels.map((label, i) => (
-      <label key={formLabels[i]}>
-        {label}
+      <div key={formLabels[i]}>
         <input
           name={formFields[i]}
           type="text"
           value={resume[category][index][formFields[i]]}
-          onChange={(e) =>
-            handleInput(e.target.name, e.target.value, category, index)
-          }
+          onChange={(e) => {
+            setActiveIndex({
+              ...activeIndex,
+              [category]: index,
+            });
+            handleInput(e.target.name, e.target.value, category, index);
+          }}
         />
-      </label>
+        <label>{label}</label>
+      </div>
     ));
   };
+
+  const addPlaceholderPrimaryKey = () => {};
 
   return (
     <>
       {generateFormInputs(category, index)}
       <div className="btnContainer">
-        <Button id="doneBtn" label="Done" handleClick={doneWithForm} />
+        {/* Show done button only if "school" is included */}
+        {resume[category][index][primaryKey] !== "" &&
+          resume[category][index][primaryKey] !== "..." && (
+            <Button id="doneBtn" label="Done" handleClick={doneWithForm} />
+          )}
+
         <Button id="deleteBtn" label="Delete" handleClick={deleteAndDone} />
       </div>
     </>
