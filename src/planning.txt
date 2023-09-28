@@ -87,6 +87,9 @@ To Do:
   
 
   To fix: in Form.jsx, use setresume to create a new obj at index if it doesn't exist
+  Replace "description" field with a textbox and add a tip to use asterisks
+  Implement logic to parse asterisks as new divs?
+  Replace (...) with animated ellipses
 
 
   

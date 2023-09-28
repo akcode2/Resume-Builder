@@ -1,4 +1,26 @@
+import { v4 as uuidv4 } from "uuid";
 import "../styles/Preview.css";
+
+const handleDescription = (description) => {
+  // Replace asterisks with bullets
+  description = description.replaceAll("*", "•");
+  // Separate the string into spans, parsing "/n/" as a new line
+  const substrings = description.split("\n");
+
+  return (
+    <>
+      {substrings.map((substring, index) => (
+        <>
+          <span key={uuidv4()}>
+            {substring}
+            {index < substrings.length - 1 && <br />}{" "}
+            {/* Add <br /> except for the last span */}
+          </span>
+        </>
+      ))}
+    </>
+  );
+};
 
 function Preview({ resume }) {
   return (
@@ -21,7 +43,7 @@ function Preview({ resume }) {
           </div>
           <div>
             {resume["education"].map((item) => (
-              <div key={Math.random()} className="eduItem">
+              <div key={uuidv4()} className="eduItem">
                 <div className="schoolAndLocation">
                   <div className="school">{item.school}</div>
                   <div className="location">{item.location}</div>
@@ -43,7 +65,7 @@ function Preview({ resume }) {
           </div>
           <div>
             {resume["experience"].map((item) => (
-              <div key={Math.random()} className="expItem">
+              <div key={uuidv4()} className="expItem">
                 <div className="companyAndLocation">
                   <div className="company">{item.company}</div>
                   <div className="location">{item.location}</div>
@@ -56,7 +78,9 @@ function Preview({ resume }) {
                     <span className="endDate">{item.endDate}</span>
                   </div>
                 </div>
-                <div className="description">{item.description}</div>
+                <div className="description">
+                  {handleDescription(item.description)}
+                </div>
               </div>
             ))}
           </div>
@@ -68,7 +92,7 @@ function Preview({ resume }) {
           </div>
           <div>
             {resume["activities"].map((item) => (
-              <div key={Math.random()} className="activitiesItem">
+              <div key={uuidv4()} className="activitiesItem">
                 <div className="companyAndLocation">
                   <div className="company">{item.organization}</div>
                   <div className="location">{item.location}</div>

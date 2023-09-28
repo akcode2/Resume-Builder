@@ -7,7 +7,6 @@ function Form({
   handleInput,
   category,
   deleteEntry,
-  setIndexToShow,
   activeIndex = { activeIndex },
   setActiveIndex = { setActiveIndex },
 }) {
@@ -103,8 +102,8 @@ function Form({
       deleteEntry(category, index);
       setActiveIndex({
         ...activeIndex,
-        [category]: index - 1
-      })
+        [category]: index - 1,
+      });
     }
   };
 
@@ -128,23 +127,66 @@ function Form({
   }
 
   const generateFormInputs = (category, index) => {
-    return formLabels.map((label, i) => (
-      <div key={formLabels[i]}>
-        <input
-          name={formFields[i]}
-          type="text"
-          value={resume[category][index][formFields[i]]}
-          onChange={(e) => {
-            setActiveIndex({
-              ...activeIndex,
-              [category]: index,
-            });
-            handleInput(e.target.name, e.target.value, category, index);
-          }}
-        />
-        <label>{label}</label>
-      </div>
-    ));
+    if (category === "experience" || category === "activities") {
+      // Create text inputs for all fields except "description"
+      // which will be a textbox
+      return (
+        <>
+          {formLabels
+            .filter((label) => label !== "Description")
+            .map((label, i) => (
+              <div key={formLabels[i]}>
+                <input
+                  name={formFields[i]}
+                  type="text"
+                  value={resume[category][index][formFields[i]]}
+                  onChange={(e) => {
+                    setActiveIndex({
+                      ...activeIndex,
+                      [category]: index,
+                    });
+                    handleInput(e.target.name, e.target.value, category, index);
+                  }}
+                />
+                <label>{label}</label>
+              </div>
+            ))}
+          <div key={"Description"}>
+            <textarea
+              name="description"
+              type="textarea"
+              value={resume[category][index]["description"]}
+              onChange={(e) => {
+                setActiveIndex({
+                  ...activeIndex,
+                  [category]: index,
+                });
+                handleInput(e.target.name, e.target.value, category, index);
+              }}
+            />
+            <label>Description</label>
+          </div>
+        </>
+      );
+    } else {
+      return formLabels.map((label, i) => (
+        <div key={formLabels[i]}>
+          <input
+            name={formFields[i]}
+            type="text"
+            value={resume[category][index][formFields[i]]}
+            onChange={(e) => {
+              setActiveIndex({
+                ...activeIndex,
+                [category]: index,
+              });
+              handleInput(e.target.name, e.target.value, category, index);
+            }}
+          />
+          <label>{label}</label>
+        </div>
+      ));
+    }
   };
 
   const addPlaceholderPrimaryKey = () => {};
