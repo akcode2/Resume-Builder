@@ -35,7 +35,7 @@ body {
 
 
 
-label {
+/* label {
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
@@ -43,14 +43,14 @@ label {
   font-weight: bold;
   font-size: 1.1rem;
   margin: 0.25rem 0.5rem;
-}
+} */
 
-input {
+/* input {
   border-radius: 1rem;
   padding: 0.5rem;
   background-color: #f1f3f5;
   line-height: 1.1rem;
-}
+} */
 
 
 /* button {

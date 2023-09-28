@@ -126,6 +126,14 @@ function Form({
     resume[category][index] = newObj;
   }
 
+  // When a field comes into focus and has "..." as its value, change it to ""
+  // const handleFocus = (field) => {
+  //   if (field === "...") {
+  //     console.log(value);
+  //     field = "";
+  //   }
+  // };
+
   const generateFormInputs = (category, index) => {
     if (category === "experience" || category === "activities") {
       // Create text inputs for all fields except "description"
@@ -135,10 +143,11 @@ function Form({
           {formLabels
             .filter((label) => label !== "Description")
             .map((label, i) => (
-              <div key={formLabels[i]}>
+              <div className="inputField" key={formLabels[i]}>
                 <input
                   name={formFields[i]}
                   type="text"
+                  placeholder={`${label}`}
                   value={resume[category][index][formFields[i]]}
                   onChange={(e) => {
                     setActiveIndex({
@@ -148,7 +157,12 @@ function Form({
                     handleInput(e.target.name, e.target.value, category, index);
                   }}
                 />
-                <label>{label}</label>
+                <label
+                  className={resume[category][index][formFields[i]] && "filled"} // Add "filled" class when input value is not an empty string
+                  htmlFor={formFields[i]}
+                >
+                  {label}
+                </label>
               </div>
             ))}
           <div key={"Description"}>
@@ -164,16 +178,22 @@ function Form({
                 handleInput(e.target.name, e.target.value, category, index);
               }}
             />
-            <label>Description</label>
+            <label
+              className={resume[category][index]["description"] && "filled"} // Add "filled" class when input value is not an empty string
+              htmlFor={"description"}
+            >
+              Description
+            </label>
           </div>
         </>
       );
     } else {
       return formLabels.map((label, i) => (
-        <div key={formLabels[i]}>
+        <div className="inputField" key={formLabels[i]}>
           <input
             name={formFields[i]}
             type="text"
+            placeholder={`${label}`}
             value={resume[category][index][formFields[i]]}
             onChange={(e) => {
               setActiveIndex({
@@ -183,13 +203,16 @@ function Form({
               handleInput(e.target.name, e.target.value, category, index);
             }}
           />
-          <label>{label}</label>
+          <label
+            className={resume[category][index][formFields[i]] && "filled"} // Add "filled" class when input value is not an empty string
+            htmlFor={formFields[i]}
+          >
+            {label}
+          </label>
         </div>
       ));
     }
   };
-
-  const addPlaceholderPrimaryKey = () => {};
 
   return (
     <>

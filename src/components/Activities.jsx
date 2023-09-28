@@ -31,21 +31,17 @@ function Activities({
           ))}
       </div>
       <div className="form" id="activities">
-        <h2>Leadership and activities</h2>
-        <div className="contents">
-          {/* Show the form if toggleShowForm is true */}
-          {
-            <Form
-              resume={resume}
-              index={activeIndex["activities"]}
-              handleInput={handleInput}
-              category={category}
-              deleteEntry={deleteEntry}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-          }
-        </div>
+        {
+          <Form
+            resume={resume}
+            index={activeIndex["activities"]}
+            handleInput={handleInput}
+            category={category}
+            deleteEntry={deleteEntry}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        }
       </div>
     </>
   );

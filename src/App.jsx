@@ -100,6 +100,7 @@ function App() {
     activities: resume["activities"].length,
   });
 
+
   const formLabels = [
     "Personal details",
     "Education",
@@ -160,7 +161,7 @@ function App() {
         break;
     }
     setResume(updatedResume);
-    console.log(resume);
+
   };
 
   const deleteEntry = (category, index) => {

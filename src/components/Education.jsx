@@ -31,19 +31,17 @@ function Education({
           ))}
       </div>
       <div className="form" id="education">
-        <div className="contents">
-          {
-            <Form
-              resume={resume}
-              index={activeIndex["education"]}
-              handleInput={handleInput}
-              category={category}
-              deleteEntry={deleteEntry}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-          }
-        </div>
+        {
+          <Form
+            resume={resume}
+            index={activeIndex["education"]}
+            handleInput={handleInput}
+            category={category}
+            deleteEntry={deleteEntry}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        }
       </div>
     </>
   );

@@ -13,7 +13,7 @@ function Experience({
     <>
       {/* Display current entries as buttons */}
       <div className="entriesCol">
-        <h2>Education</h2>
+        <h2>Experience</h2>
         {resume["experience"]
           .filter((item) => item.company != "")
           .map((item, index) => (
@@ -31,19 +31,17 @@ function Experience({
           ))}
       </div>
       <div className="form" id="experience">
-        <div className="contents">
-          {
-            <Form
-              resume={resume}
-              index={activeIndex["experience"]}
-              handleInput={handleInput}
-              category={category}
-              deleteEntry={deleteEntry}
-              activeIndex={activeIndex}
-              setActiveIndex={setActiveIndex}
-            />
-          }
-        </div>
+        {
+          <Form
+            resume={resume}
+            index={activeIndex["experience"]}
+            handleInput={handleInput}
+            category={category}
+            deleteEntry={deleteEntry}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        }
       </div>
     </>
   );
