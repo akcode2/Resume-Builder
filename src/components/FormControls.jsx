@@ -16,8 +16,8 @@ function FormControls({
   deleteEntry,
   handleSkillsSubmit,
   handleDeleteTag,
-  activeIndex={activeIndex},
-  setActiveIndex={setActiveIndex}
+  activeIndex = { activeIndex },
+  setActiveIndex = { setActiveIndex },
 }) {
   return (
     <>
@@ -61,6 +61,8 @@ function FormControls({
             handleInput={handleInput}
             deleteEntry={deleteEntry}
             category={"experience"}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         )}
         {activeCat === "activities" && (
@@ -69,6 +71,8 @@ function FormControls({
             handleInput={handleInput}
             deleteEntry={deleteEntry}
             category={"activities"}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         )}
         {activeCat === "skills" && (

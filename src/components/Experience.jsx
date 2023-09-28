@@ -1,47 +1,48 @@
 import { useState } from "react";
 import Form from "./Form.jsx";
 
-function Experience({ resume, handleInput, deleteEntry, category }) {
-  const [showForm, setShowForm] = useState(false);
-  const [indexToShow, setIndexToShow] = useState(-1);
-
-  const toggleShowForm = (index) => {
-    setShowForm(!showForm);
-    setIndexToShow(index);
-  };
-
+function Experience({
+  resume,
+  handleInput,
+  deleteEntry,
+  category,
+  activeIndex = { activeIndex },
+  setActiveIndex = { setActiveIndex },
+}) {
   return (
     <>
-      <div className="formCategory" id="experience">
-        <h2>Experience</h2>
+      {/* Display current entries as buttons */}
+      <div className="entriesCol">
+        <h2>Education</h2>
+        {resume["experience"]
+          .filter((item) => item.company != "")
+          .map((item, index) => (
+            <button
+              key={`${item.company}_${index}`}
+              onClick={() =>
+                setActiveIndex({
+                  ...activeIndex,
+                  [category]: index,
+                })
+              }
+            >
+              {item.company}
+            </button>
+          ))}
+      </div>
+      <div className="form" id="experience">
         <div className="contents">
-          {/* Show the form if toggleShowForm is true */}
-          {showForm && (
+          {
             <Form
               resume={resume}
-              index={indexToShow}
+              index={activeIndex["experience"]}
               handleInput={handleInput}
               category={category}
-              toggleShowForm={toggleShowForm}
               deleteEntry={deleteEntry}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
             />
-          )}
-          {/* Otherwise show list of experience as buttons */}
-          {!showForm &&
-            resume["experience"].map((item, index) => (
-              <button key={`${item.company}_${item.position}`} onClick={() => toggleShowForm(index)}>
-                {item.company}
-              </button>
-            ))}
-          {/* Afterwards, show add button to add experience */}
-          {!showForm && (
-            <button
-              id="addExperience"
-              onClick={() => toggleShowForm(resume[category].length)}
-            >
-              + Company
-            </button>
-          )}
+          }
         </div>
       </div>
     </>

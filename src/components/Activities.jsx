@@ -1,50 +1,50 @@
 import { useState } from "react";
 import Form from "./Form.jsx";
 
-function Activities({ resume, handleInput, deleteEntry, category }) {
-  const [showForm, setShowForm] = useState(false);
-  const [indexToShow, setIndexToShow] = useState(-1);
-
-  const toggleShowForm = (index) => {
-    setShowForm(!showForm);
-    setIndexToShow(index);
-  };
-
+function Activities({
+  resume,
+  handleInput,
+  deleteEntry,
+  category,
+  activeIndex = { activeIndex },
+  setActiveIndex = { setActiveIndex },
+}) {
   return (
     <>
-      <div className="formCategory" id="activities">
+      {/* Display current entries as buttons */}
+      <div className="entriesCol">
+        <h2>Leadership & Activities</h2>
+        {resume["activities"]
+          .filter((item) => item.organization != "")
+          .map((item, index) => (
+            <button
+              key={`${item.organization}_${index}`}
+              onClick={() =>
+                setActiveIndex({
+                  ...activeIndex,
+                  [category]: index,
+                })
+              }
+            >
+              {item.organization}
+            </button>
+          ))}
+      </div>
+      <div className="form" id="activities">
         <h2>Leadership and activities</h2>
         <div className="contents">
           {/* Show the form if toggleShowForm is true */}
-          {showForm && (
+          {
             <Form
               resume={resume}
-              index={indexToShow}
+              index={activeIndex["activities"]}
               handleInput={handleInput}
               category={category}
-              toggleShowForm={toggleShowForm}
               deleteEntry={deleteEntry}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
             />
-          )}
-          {/* Otherwise show list of activities as buttons */}
-          {!showForm &&
-            resume["activities"].map((item, index) => (
-              <button
-                key={`${item.organization}_${item.role}`}
-                onClick={() => toggleShowForm(index)}
-              >
-                {item.organization}
-              </button>
-            ))}
-          {/* Afterwards, show add button to add activity */}
-          {!showForm && (
-            <button
-              id="addActivity"
-              onClick={() => toggleShowForm(resume[category].length)}
-            >
-              + Leadership / Activity
-            </button>
-          )}
+          }
         </div>
       </div>
     </>
