@@ -25,6 +25,9 @@ function Education({
                   [category]: index,
                 })
               }
+              className={`entryBtn ${
+                activeIndex["education"] === index ? "active" : ""
+              }`}
             >
               {item.school}
             </button>

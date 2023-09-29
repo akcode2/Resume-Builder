@@ -165,10 +165,17 @@ function Form({
                 </label>
               </div>
             ))}
-          <div key={"Description"}>
+          <div className="descriptionField" key={"Description"}>
+            <label
+              className={resume[category][index]["description"] && "filled"} // Add "filled" class when input value is not an empty string
+              htmlFor={"description"}
+            >
+              Description
+            </label>
             <textarea
               name="description"
               type="textarea"
+              placeholder="Tip: Use asterisks (*) for bullet points"
               value={resume[category][index]["description"]}
               onChange={(e) => {
                 setActiveIndex({
@@ -178,12 +185,6 @@ function Form({
                 handleInput(e.target.name, e.target.value, category, index);
               }}
             />
-            <label
-              className={resume[category][index]["description"] && "filled"} // Add "filled" class when input value is not an empty string
-              htmlFor={"description"}
-            >
-              Description
-            </label>
           </div>
         </>
       );

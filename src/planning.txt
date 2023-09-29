@@ -91,5 +91,11 @@ To Do:
   Implement logic to parse asterisks as new divs?
   Replace (...) with animated ellipses
 
+  Known bugs: Opening a form section creates empty space in the previewed resume
+  persists even if a new entry isn't created.
+  
+  You can't backspace to remove the ellipses created automatically for a blank 
+  school/company/organization. You have to highlight and then type over them.
+
 
   

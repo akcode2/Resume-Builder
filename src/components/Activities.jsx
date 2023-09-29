@@ -25,6 +25,9 @@ function Activities({
                   [category]: index,
                 })
               }
+              className={`entryBtn ${
+                activeIndex["activities"] === index ? "active" : ""
+              }`}
             >
               {item.organization}
             </button>

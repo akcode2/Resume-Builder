@@ -1,25 +1,27 @@
+
 /* Form navigation styles */
 #formNav {
   display: flex;
-  width: 630px;
-  height: 39px;
+  width: 690px;
+  height: 50px;
   justify-content: center;
   gap: 16px;
   grid-row: 1;
   grid-column: 1 / 3;
 }
 
-.navItem {
-  font-family: "Montserrat";
+.navItem, .entryBtn {
   font-weight: 300;
-  font-size: 12px;
-  /* background: none;
-    border: 0; */
+  font-size: 14px;
+  font-family: "Montserrat";
+  width: min-content;
+  background: none;
+    border: 0;
   transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .active {
-  font-weight: 600;
+  font-weight: 700;
   transform: scale(1.25);
 }
 
@@ -35,21 +37,67 @@
 
 .entriesCol {
   grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
+.entryBtn {
+  font-family: "Montserrat";
+  margin: 1.1rem;
+}
+
 /* Div containing the actual form */
 .form {
   grid-row: 1;
   grid-column: 2;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
+  max-height: 350px;
   gap: 15px;
-  margin: auto;
+  margin: auto 1rem;
+  font-family: "Roboto";
 }
 
 .form > h2 {
   align-self: start;
   line-height: 1rem;
   margin: 1rem 0.5rem;
+}
+
+/* Make fields in Personal Details and Education take up more whitespace*/
+#personalDetails input {
+  width: 36ch;
+}
+
+#education input {
+  width: 36ch;
+}
+
+/* Style for textarea / description field*/
+.descriptionField {
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionField label {
+  font-size: 18px;
+  line-height: 0.7;
+  padding-left: 16px;
+  margin: 2ch;
+  color: #6f81a5;
+}
+textarea {
+  width: 311px;
+  height: 100px;
+  margin: 0 1rem;
+  box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+  rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 16%) 0px 0px 0px 1px,
+  rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
+  rgb(0 0 0 / 0%) 0px 0px 0px 0px;
+  border: 0;
+  outline: 0;
 }
 
 /* Floating labels */
@@ -59,8 +107,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Styling like Stripe's inputs */
-  
 }
 
 /* Make the placeholder transparent by default */
@@ -77,25 +123,20 @@ input::placeholder {
   transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   color: #6f81a5;
   font-size: 18px;
-  line-height: .7;
+  line-height: 0.7;
   left: 16px;
-  /* bottom: 25px; */
 }
 
 .inputField:focus-within label {
   transform: translate(0, 0) scale(0.7);
   color: #0a53e4;
 }
-
+/* If input has text, keep label shifted  */
 .inputField .filled {
   transform: translate(0, 0) scale(0.7);
 }
 
-
-
 /* Style inputs like Stripe's inputs */
-
-
 input {
   height: 40px;
   font-size: 18px;
@@ -110,9 +151,9 @@ input {
   border-radius: 4px;
   line-height: 20px;
   font-weight: 400;
-  padding: 4px 8px;
+  padding: 12px 8px 4px 12px;
   min-height: 28px;
-  vertical-align: middle;
+  vertical-align: top;
   transition: background-color 0.24s, box-shadow 0.24s;
   transition-property: background-color, box-shadow;
   transition-duration: 0.24s, 0.24s;
@@ -125,4 +166,127 @@ input:focus {
     rgb(58 151 212 / 36%) 0px 0px 0px 4px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
     rgb(60 66 87 / 16%) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
     rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px;
+}
+
+/* Make input fields in Experience and Leadership & Activities smaller */
+/* #experience input {
+  width: 18ch;
+  height: 20px;
+  font-size: 16px;
+}
+
+#experience label {
+  font-size: 16px;
+} */
+
+
+/* Style for Done and Delete buttons */
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-self: end;
+  /* min-width: 40ch; */
+}
+
+#education .btnContainer {
+  width: 384px;
+  margin-right: auto;
+}
+
+#experience .btnContainer, #activities .btnContainer {
+  width: 316px;
+  margin: auto;
+}
+
+.btnContainer button {
+  font-size: 18px;
+  padding: 8px;
+}
+
+#deleteBtn {
+  margin-left: auto;
+}
+
+.formCtrlBtn {
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+  width: 10ch;
+  padding: 0.5ch;
+  line-height: 1ch;
+}
+
+/* Style for Skills & Interests */
+#skills {
+  display: grid;
+  max-width: 334px;
+  height: 456px;
+  grid-template-rows: 200px 200px;
+  overflow: scroll;
+  padding: 2ch;
+ 
+}
+
+#skillsCol {
+  grid-row: 1;
+  overflow: scroll;
+  padding-top: 1ch;
+}
+
+#interestsCol {
+  grid-row: 2;
+  padding-top: 1ch;
+  overflow: scroll;
+}
+
+#skillsCol, #interestsCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.skillsInput {
+  padding: 0 1ch;
+  margin: 0 1ch;
+}
+
+.skillsInput::placeholder {
+  opacity: 1;
+}
+
+input[type="submit"] {
+  padding: 1ch;
+}
+
+.tag {
+  font-size: 12px;
+  width: fit-content;
+  display: inline-block;
+  margin: 0.5ch;
+  border: 1px solid black;
+}
+
+/* Tag content */
+.skillInterest {
+  display: flex;
+  line-height: 0.75rem;
+  align-items: center;
+  padding-left: 0.5ch;
+}
+
+/* Button for deleting a tag */
+.deleteSkillInterest {
+  display: inline;
+  width: min-content;
+  margin-top: 4px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  height: 1ch;
+}
+
+#skillsList, #interestsList {
+  margin-top: 1ch;
 }

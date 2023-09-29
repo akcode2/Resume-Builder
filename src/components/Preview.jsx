@@ -1,31 +1,32 @@
 import { v4 as uuidv4 } from "uuid";
 import "../styles/Preview.css";
 
-const handleDescription = (description) => {
-  // Replace asterisks with bullets
-  description = description.replaceAll("*", "•");
-  // Separate the string into spans, parsing "/n/" as a new line
-  const substrings = description.split("\n");
-
-  return (
-    <>
-      {substrings.map((substring, index) => (
-        <>
-          <span key={uuidv4()}>
-            {substring}
-            {index < substrings.length - 1 && <br />}{" "}
-            {/* Add <br /> except for the last span */}
-          </span>
-        </>
-      ))}
-    </>
-  );
-};
 
 function Preview({ resume }) {
+  const handleDescription = (description) => {
+    // Replace asterisks with bullets
+    description = description.replaceAll("*", "•");
+    // Separate the string into spans, parsing "/n/" as a new line
+    const substrings = description.split("\n");
+
+    return (
+      <>
+        {substrings.map((substring, index) => (
+          <>
+            <span key={uuidv4()}>
+              {substring}
+              {index < substrings.length - 1 && <br />}{" "}
+              {/* Add <br /> except for the last span */}
+            </span>
+          </>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
-      <div id="preview" className="preview">
+      <div className="preview">
         <div id="header">
           <div className="name">{resume["personalDetails"].fullName}</div>
           <div className="personalDetails">
@@ -116,10 +117,12 @@ function Preview({ resume }) {
             <h1>Skills and Interests</h1>
           </div>
           <div id="displayedSkills">
-            Skills: {resume["skills"].skills.join(", ")}
+            <span className="pvSkillsSpan">Skills: </span> <br/>
+            {resume["skills"].skills.join(", ")}
           </div>
           <div id="displayedInterests">
-            Interests: {resume["skills"].interests.join(", ")}
+          <span className="pvSkillsSpan">Interests: </span> <br />
+          {resume["skills"].interests.join(", ")}
           </div>
         </div>
       </div>

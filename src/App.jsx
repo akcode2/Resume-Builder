@@ -33,9 +33,7 @@ function App() {
         startDate: "June 2018",
         endDate: "Present",
         location: "New York, NY",
-        description: `
-        * Led the company through major strategic shifts, resulting in significant revenue growth and market expansion.
-        `,
+        description: `* Led the company through major strategic shifts, resulting in significant revenue growth and market expansion.`,
       },
       {
         company: "Waystar Royco",
@@ -43,9 +41,7 @@ function App() {
         startDate: "May 2010",
         endDate: "June 2018",
         location: "New York, NY",
-        description: `
-        * Developed and executed strategies to diversify revenue streams and drive business growth.
-        `,
+        description: `* Developed and executed strategies to diversify revenue streams and drive business growth.`,
       },
     ],
     activities: [
@@ -99,7 +95,6 @@ function App() {
     experience: resume["experience"].length,
     activities: resume["activities"].length,
   });
-
 
   const formLabels = [
     "Personal details",
@@ -161,7 +156,6 @@ function App() {
         break;
     }
     setResume(updatedResume);
-
   };
 
   const deleteEntry = (category, index) => {
@@ -219,8 +213,115 @@ function App() {
     setResume(updatedResume);
   };
 
+  const handleClearExample = () => {
+    setResume({
+      personalDetails: {
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        address: "",
+      },
+      education: [],
+      experience: [],
+      activities: [],
+      skills: {
+        skills: [],
+        interests: [],
+      },
+    });
+  };
+
+  const handleLoadExample = () => {
+    setResume({
+      personalDetails: {
+        fullName: "Kendall Roy",
+        email: "kendall.roy@waystar.com",
+        phoneNumber: "(555) 555-5555",
+        address: "1234 Success St, New York, NY ",
+      },
+      education: [
+        {
+          school: "Harvard Business School",
+          degree: "Master of Business Administration (MBA)",
+          gradDate: "May 2010",
+          location: "Boston, MA",
+        },
+        {
+          school: "Wharton School of Business, University of Pennsylvania",
+          degree: "Bachelor of Business Administration",
+          gradDate: "May 2008",
+          location: "Philadelphia, PA",
+        },
+      ],
+      experience: [
+        {
+          company: "Waystar Royco",
+          position: "Chief Executive Officer",
+          startDate: "June 2018",
+          endDate: "Present",
+          location: "New York, NY",
+          description: `* Led the company through major strategic shifts, resulting in significant revenue growth and market expansion.`,
+        },
+        {
+          company: "Waystar Royco",
+          position: "Vice President of Strategic Development",
+          startDate: "May 2010",
+          endDate: "June 2018",
+          location: "New York, NY",
+          description: `* Developed and executed strategies to diversify revenue streams and drive business growth.`,
+        },
+      ],
+      activities: [
+        {
+          organization: "New York Business Association",
+          role: "Board Member",
+          startDate: "May 2011",
+          endDate: "Present",
+          location: "New York, NY",
+          description:
+            "* Actively involved in shaping policies and initiatives to promote economic growth and business development in the region.",
+        },
+        {
+          organization: "Future Business Leaders Program",
+          role: "Mentor",
+          startDate: "September 2014",
+          endDate: "Present",
+          location: "New York, NY",
+          description:
+            "Guided and mentored aspiring business leaders, providing insights and advice to help them succeed in their careers.",
+        },
+        {
+          organization: "Industry Conferences",
+          role: "Speaker",
+          startDate: "May 2011",
+          endDate: "Present",
+          location: "New York, NY",
+          description:
+            "Shared expertise and insights on business strategies, leadership, and innovation at various industry conferences.",
+        },
+      ],
+      skills: {
+        skills: [
+          "Strategic Planning",
+          "Leadership",
+          "Financial Analysis",
+          "Market Research",
+          "Negotiation",
+          "Marketing Strategy",
+        ],
+        interests: ["Technology Trends", "Philanthropy", "Golf", "Fine Dining"],
+      },
+    });
+  };
+
   return (
     <>
+      <button id="clearExample" className="button-30" onClick={handleClearExample}>
+        Clear Example
+      </button>
+      <button id="loadExample" className="button-30" onClick={handleLoadExample}>
+        Load Example
+      </button>
       <div id="formControls">
         <FormControls
           resume={resume}

@@ -12,58 +12,70 @@ function Skills({ resume, handleSkillsSubmit, handleDeleteTag }) {
   );
   return (
     <>
-      <div className="formCategory" id="skills">
-        <h2>Skills and interests</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const inputValue = e.target.skills.value;
-            handleSkillsSubmit("skills", inputValue);
-            e.target.skills.value = "";
-          }}
-        >
-          <input name="skills" type="text" />
-          <input type="submit"></input>
-        </form>
-        Skills:{" "}
-        {resume["skills"].skills.map((skill, index) => (
-          <div key={`skills-${skill}-${index}`} className="tag">
-            <div className="skillInterest">
-              {skill}
-              <button
-                className="deleteSkillInterest"
-                onClick={() => handleDeleteTag("skills", index)}
-              >
-                <i className="deleteIcon">{svg}</i>
-              </button>
-            </div>
+      <div className="entriesCol">
+        <h2>Skills & interests</h2>
+      </div>
+      <div className="form" id="skills">
+        <div id="skillsCol">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const inputValue = e.target.skills.value;
+              handleSkillsSubmit("skills", inputValue);
+              e.target.skills.value = "";
+            }}
+          >
+            <input className="skillsInput" name="skills" placeholder="Add a skill..." type="text" />
+            <input type="submit"></input>
+          </form>
+
+          <div id="skillsList">
+            Skills:{" "}
+            {resume["skills"].skills.map((skill, index) => (
+              <div key={`skills-${skill}-${index}`} className="tag">
+                <div className="skillInterest">
+                  {skill}
+                  <button
+                    className="deleteSkillInterest"
+                    onClick={() => handleDeleteTag("skills", index)}
+                  >
+                    <i className="deleteIcon">{svg}</i>
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const inputValue = e.target.interests.value;
-            handleSkillsSubmit("interests", inputValue);
-            e.target.interests.value = "";
-          }}
-        >
-          <input name="interests" type="text" />
-          <input type="submit"></input>
-        </form>
-        Interests:{" "}
-        {resume["skills"].interests.map((interest, index) => (
-          <div key={`interests-${interest}-${index}`} className="tag">
-            <div className="skillInterest">
-              {interest}
-              <button
-                className="deleteSkillInterest"
-                onClick={() => handleDeleteTag("interests", index)}
-              >
-                <i className="deleteIcon">{svg}</i>
-              </button>
-            </div>
+        </div>
+        <div id="interestsCol">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const inputValue = e.target.interests.value;
+              handleSkillsSubmit("interests", inputValue);
+              e.target.interests.value = "";
+            }}
+          >
+            <input className="skillsInput" name="interests" placeholder="Add an interest..." type="text" />
+            <input type="submit"></input>
+          </form>
+
+          <div id="interestsList">
+            Interests:{" "}
+            {resume["skills"].interests.map((interest, index) => (
+              <div key={`interests-${interest}-${index}`} className="tag">
+                <div className="skillInterest">
+                  {interest}
+                  <button
+                    className="deleteSkillInterest"
+                    onClick={() => handleDeleteTag("interests", index)}
+                  >
+                    <i className="deleteIcon">{svg}</i>
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </>
   );

@@ -1,17 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;300;600;700&family=Roboto&display=swap');
+
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 #root {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  padding: 2rem;
 }
 
+#clearExample {
+  position: absolute;
+}
+#loadExample {
+  position: absolute;
+  left: 22ch;
+}
+
+#clearExample, #loadExample {
+  font-family: "Roboto";
+  padding: 1ch;
+  outline: rgb(58 151 212 / 36%);
+}
+
+
 #formControls {
-  width: 690px;
+  width: 750px;
   height: 496px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
   margin: auto;
   border-radius: 19px;
@@ -20,87 +35,65 @@ body {
   grid-template-columns: 177px 1fr;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  font-family: "Roboto";
+  font-family: "Montserrat";
 }
 
 #preview {
   width: 539px;
   height: 763px;
-  background-color: #8E8787;
-  /* A4 page aspect ratio */
-  aspect-ratio: 1.414 / 1;
   overflow: scroll;
+  font-size: 12px;
+  background-color: #FAF9F6;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 
 
+/* Algolia button example from https://getcssscan.com/css-buttons-examples */
 
-/* label {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
-  gap: 0.5rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin: 0.25rem 0.5rem;
-} */
-
-/* input {
-  border-radius: 1rem;
-  padding: 0.5rem;
-  background-color: #f1f3f5;
-  line-height: 1.1rem;
-} */
-
-
-/* button {
-  display: flex;
-  width: 40ch;
-  margin: 1rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-align: center;
-} */
-
-.btnContainer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.formCtrlBtn {
-  display: flex;
-  gap: 1ch;
+/* CSS */
+.button-30 {
   align-items: center;
-  width: 10ch;
-  padding: 0.5ch;
-  line-height: 1ch;
-}
-
-.tag {
-  width: fit-content;
-  display: inline-block;
-  margin: .5ch;
-  border: 1px solid black;
-}
-
-/* Tag content */
-.skillInterest {
-display: flex;
-line-height: .75rem;
-align-items: center;
-padding-left: .5ch;
-}
-
-/* Button for deleting a tag */
-.deleteSkillInterest {
-  display: inline;
-  width: min-content;
-  margin: 0;
-  background: transparent;
-  border: 0;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
   cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
 }
 
-.deleteIcon {
-  height: 1ch;
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+

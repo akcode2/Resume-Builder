@@ -25,6 +25,9 @@ function Experience({
                   [category]: index,
                 })
               }
+              className={`entryBtn ${
+                activeIndex["experience"] === index ? "active" : ""
+              }`}
             >
               {item.company}
             </button>
